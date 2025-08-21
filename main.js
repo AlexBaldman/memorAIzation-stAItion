@@ -3,14 +3,25 @@ const tpl = document.getElementById('card-template');
 let IMAGE_MANIFEST = {};
 
 // ---------------- Image Generation Config ----------------
-// Choose provider via env var; default to HF if token present else qwen
-const IMAGE_PROVIDER = import.meta.env.VITE_IMAGE_PROVIDER || (import.meta.env.VITE_HF_TOKEN ? 'hf' : 'qwen');
-const HF_MODEL_URL = 'https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2';
+// Config is user-selectable via UI and persisted in localStorage
 const HF_TOKEN = import.meta.env.VITE_HF_TOKEN;
+const DEFAULT_PROVIDER = import.meta.env.VITE_IMAGE_PROVIDER || (HF_TOKEN ? 'hf' : 'qwen');
+const DEFAULT_MODEL = 'stabilityai/stable-diffusion-2';
+
+function getAIConfig() {
+  const provider = localStorage.getItem('ai-provider') || DEFAULT_PROVIDER;
+  const model = localStorage.getItem('ai-model') || DEFAULT_MODEL;
+  return { provider, model };
+}
+
+function getHFModelUrl(model) {
+  return `https://api-inference.huggingface.co/models/${model}`;
+}
 
 async function generateImage(prompt) {
-  if (IMAGE_PROVIDER === 'hf' && HF_TOKEN) {
-    const res = await fetch(HF_MODEL_URL, {
+  const { provider, model } = getAIConfig();
+  if (provider === 'hf' && HF_TOKEN) {
+    const res = await fetch(getHFModelUrl(model), {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${HF_TOKEN}`,
@@ -119,7 +130,25 @@ function createCard(entry) {
   return node;
 }
 
+// Initialize AI config UI controls
+function initAIControls() {
+  const sel = document.getElementById('ai-provider');
+  const inp = document.getElementById('ai-model');
+  const btn = document.getElementById('save-ai-config');
+  if (!sel || !inp || !btn) return;
+  const { provider, model } = getAIConfig();
+  sel.value = provider;
+  inp.value = model;
+  btn.addEventListener('click', () => {
+    localStorage.setItem('ai-provider', sel.value);
+    localStorage.setItem('ai-model', inp.value.trim() || DEFAULT_MODEL);
+    btn.textContent = 'Saved';
+    setTimeout(() => (btn.textContent = 'Save'), 1000);
+  });
+}
+
 loadData().then(data => {
+  initAIControls();
   Object.values(data).forEach(entry => {
     container.appendChild(createCard(entry));
   });

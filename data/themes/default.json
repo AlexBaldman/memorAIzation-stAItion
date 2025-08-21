@@ -1,0 +1,33 @@
+{
+  "name": "Default",
+  "components": [
+    {
+      "id": "frame",
+      "type": "frame",
+      "label": "Card Frame",
+      "style": {"border":"4px solid #1f2937","borderRadius":"12px","background":"linear-gradient(180deg,#fafafa,#e5e7eb)"},
+      "bounds": {"x": 8, "y": 8, "w": 304, "h": 432}
+    },
+    {
+      "id": "titleBar",
+      "type": "title",
+      "label": "Title Bar",
+      "style": {"background":"#111827","color":"#fff","fontWeight":"700","padding":"6px 10px","borderRadius":"8px"},
+      "bounds": {"x": 16, "y": 16, "w": 288, "h": 32}
+    },
+    {
+      "id": "art",
+      "type": "art",
+      "label": "Art Frame",
+      "style": {"background":"#000","borderRadius":"8px","overflow":"hidden"},
+      "bounds": {"x": 16, "y": 56, "w": 288, "h": 240}
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "label": "Footer Text",
+      "style": {"background":"#1f2937","color":"#e5e7eb","padding":"6px 10px","borderRadius":"8px","fontSize":"12px"},
+      "bounds": {"x": 16, "y": 304, "w": 288, "h": 48}
+    }
+  ]
+}
