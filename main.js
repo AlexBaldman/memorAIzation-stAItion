@@ -127,6 +127,34 @@ function createCard(entry) {
       btn.textContent = 'Generate new image';
     }
   });
+
+  // AI edit button (prompt-based stub)
+  const editBtn = node.querySelector('.edit-btn');
+  if (editBtn) {
+    editBtn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const promptInput = window.prompt('Describe your edit (e.g., make pixel-art style, increase contrast):');
+      if (!promptInput) return;
+      const prev = editBtn.textContent;
+      editBtn.disabled = true;
+      editBtn.textContent = 'Editing…';
+      try {
+        const prompt = `${promptInput} — subject: ${entry.name} ${entry.emoji || ''}`;
+        const blob = await generateImage(prompt);
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          localStorage.setItem(`img-edit-${entry.number}`, url);
+          img.src = url;
+          localStorage.removeItem(choiceKey);
+        }
+      } catch (_) {
+        // no-op
+      } finally {
+        editBtn.disabled = false;
+        editBtn.textContent = prev;
+      }
+    });
+  }
   return node;
 }
 
