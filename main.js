@@ -44,6 +44,44 @@ async function generateImage(prompt) {
 }
 // ---------------------------------------------------------
 
+// Attempt to get a Blob of the currently displayed <img>
+async function getImageBlobFromElement(img) {
+  try {
+    const res = await fetch(img.src, { mode: 'cors' });
+    if (res.ok) return await res.blob();
+  } catch (_) {
+    // fallback to canvas extraction
+  }
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    return await new Promise((resolve) => canvas.toBlob(resolve));
+  } catch (_) {
+    return null;
+  }
+}
+
+// Provider-aware image editing (img2img). Currently supports Qwen Image Edit.
+async function editImage(prompt, sourceBlob) {
+  const { provider, model } = getAIConfig();
+  if (provider === 'qwen') {
+    const form = new FormData();
+    form.append('inputs', sourceBlob || new Blob(), 'input.png');
+    form.append('parameters', JSON.stringify({ prompt }));
+    const res = await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen-Image-Edit', {
+      method: 'POST',
+      body: form
+    });
+    if (!res.ok) throw new Error('Qwen img2img request failed');
+    return res.blob();
+  }
+  // Fallback: use text-to-image if HF (model-specific img2img not configured here)
+  return generateImage(prompt);
+}
+
 async function loadData() {
   const [peopleRes, manifestRes] = await Promise.all([
     fetch('data/memory-people.json'),
@@ -140,7 +178,9 @@ function createCard(entry) {
       editBtn.textContent = 'Editing…';
       try {
         const prompt = `${promptInput} — subject: ${entry.name} ${entry.emoji || ''}`;
-        const blob = await generateImage(prompt);
+        // Prefer image-to-image using the currently displayed image
+        const baseBlob = await getImageBlobFromElement(img);
+        const blob = await editImage(prompt, baseBlob);
         if (blob) {
           const url = URL.createObjectURL(blob);
           localStorage.setItem(`img-edit-${entry.number}`, url);
