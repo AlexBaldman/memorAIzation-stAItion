@@ -1,0 +1,316 @@
+{
+  "hearts": {
+    "A": {
+      "rank": "A",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 1,
+      "pao": {
+        "person": "Adam",
+        "action": "Admires",
+        "object": "Apple",
+        "story": "Adam admires a bright red apple"
+      },
+      "blackjack": {
+        "softValue": 11,
+        "hardValue": 1,
+        "basicStrategy": "Always hit on soft totals, stand on hard totals 17+"
+      }
+    },
+    "2": {
+      "rank": "2",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 2,
+      "pao": {
+        "person": "Bella",
+        "action": "Bakes",
+        "object": "Bread",
+        "story": "Bella bakes fresh bread with love"
+      },
+      "blackjack": {
+        "softValue": 2,
+        "hardValue": 2,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    },
+    "3": {
+      "rank": "3",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 3,
+      "pao": {
+        "person": "Charlie",
+        "action": "Cares",
+        "object": "Cat",
+        "story": "Charlie cares for a fluffy cat"
+      },
+      "blackjack": {
+        "softValue": 3,
+        "hardValue": 3,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    },
+    "4": {
+      "rank": "4",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 4,
+      "pao": {
+        "person": "Diana",
+        "action": "Dreams",
+        "object": "Diamond",
+        "story": "Diana dreams of sparkling diamonds"
+      },
+      "blackjack": {
+        "softValue": 4,
+        "hardValue": 4,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    },
+    "5": {
+      "rank": "5",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 5,
+      "pao": {
+        "person": "Emma",
+        "action": "Embraces",
+        "object": "Eagle",
+        "story": "Emma embraces a majestic eagle"
+      },
+      "blackjack": {
+        "softValue": 5,
+        "hardValue": 5,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    },
+    "6": {
+      "rank": "6",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 6,
+      "pao": {
+        "person": "Frank",
+        "action": "Finds",
+        "object": "Flower",
+        "story": "Frank finds a beautiful flower"
+      },
+      "blackjack": {
+        "softValue": 6,
+        "hardValue": 6,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    },
+    "7": {
+      "rank": "7",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 7,
+      "pao": {
+        "person": "Grace",
+        "action": "Gives",
+        "object": "Gift",
+        "story": "Grace gives a thoughtful gift"
+      },
+      "blackjack": {
+        "softValue": 7,
+        "hardValue": 7,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    },
+    "8": {
+      "rank": "8",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 8,
+      "pao": {
+        "person": "Henry",
+        "action": "Holds",
+        "object": "Heart",
+        "story": "Henry holds a beating heart"
+      },
+      "blackjack": {
+        "softValue": 8,
+        "hardValue": 8,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    },
+    "9": {
+      "rank": "9",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 9,
+      "pao": {
+        "person": "Iris",
+        "action": "Inspires",
+        "object": "Idea",
+        "story": "Iris inspires brilliant ideas"
+      },
+      "blackjack": {
+        "softValue": 9,
+        "hardValue": 9,
+        "basicStrategy": "Hit on totals 12 or less, stand on 17+"
+      }
+    },
+    "10": {
+      "rank": "10",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 10,
+      "pao": {
+        "person": "Jack",
+        "action": "Joins",
+        "object": "Journey",
+        "story": "Jack joins an exciting journey"
+      },
+      "blackjack": {
+        "softValue": 10,
+        "hardValue": 10,
+        "basicStrategy": "Hit on totals 12 or less, stand on 17+"
+      }
+    },
+    "J": {
+      "rank": "J",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 10,
+      "pao": {
+        "person": "Queen",
+        "action": "Questions",
+        "object": "Quilt",
+        "story": "Queen questions a handmade quilt"
+      },
+      "blackjack": {
+        "softValue": 10,
+        "hardValue": 10,
+        "basicStrategy": "Hit on totals 12 or less, stand on 17+"
+      }
+    },
+    "Q": {
+      "rank": "Q",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 10,
+      "pao": {
+        "person": "King",
+        "action": "Kisses",
+        "object": "Key",
+        "story": "King kisses a golden key"
+      },
+      "blackjack": {
+        "softValue": 10,
+        "hardValue": 10,
+        "basicStrategy": "Hit on totals 12 or less, stand on 17+"
+      }
+    },
+    "K": {
+      "rank": "K",
+      "suit": "hearts",
+      "suitSymbol": "♥",
+      "suitColor": "red",
+      "value": 10,
+      "pao": {
+        "person": "Ace",
+        "action": "Admires",
+        "object": "Angel",
+        "story": "Ace admires a heavenly angel"
+      },
+      "blackjack": {
+        "softValue": 10,
+        "hardValue": 10,
+        "basicStrategy": "Hit on totals 12 or less, stand on 17+"
+      }
+    }
+  },
+  "diamonds": {
+    "A": {
+      "rank": "A",
+      "suit": "diamonds",
+      "suitSymbol": "♦",
+      "suitColor": "red",
+      "value": 1,
+      "pao": {
+        "person": "Alice",
+        "action": "Achieves",
+        "object": "Award",
+        "story": "Alice achieves a prestigious award"
+      },
+      "blackjack": {
+        "softValue": 11,
+        "hardValue": 1,
+        "basicStrategy": "Always hit on soft totals, stand on hard totals 17+"
+      }
+    },
+    "2": {
+      "rank": "2",
+      "suit": "diamonds",
+      "suitSymbol": "♦",
+      "suitColor": "red",
+      "value": 2,
+      "pao": {
+        "person": "Bob",
+        "action": "Builds",
+        "object": "Bridge",
+        "story": "Bob builds a magnificent bridge"
+      },
+      "blackjack": {
+        "softValue": 2,
+        "hardValue": 2,
+        "basicStrategy": "Hit on totals 8 or less, stand on 17+"
+      }
+    }
+  },
+  "clubs": {
+    "A": {
+      "rank": "A",
+      "suit": "clubs",
+      "suitSymbol": "♣",
+      "suitColor": "black",
+      "value": 1,
+      "pao": {
+        "person": "Alex",
+        "action": "Attacks",
+        "object": "Arrow",
+        "story": "Alex attacks with precise arrows"
+      },
+      "blackjack": {
+        "softValue": 11,
+        "hardValue": 1,
+        "basicStrategy": "Always hit on soft totals, stand on hard totals 17+"
+      }
+    }
+  },
+  "spades": {
+    "A": {
+      "rank": "A",
+      "suit": "spades",
+      "suitSymbol": "♠",
+      "suitColor": "black",
+      "value": 1,
+      "pao": {
+        "person": "Anna",
+        "action": "Analyzes",
+        "object": "Answer",
+        "story": "Anna analyzes complex answers"
+      },
+      "blackjack": {
+        "softValue": 11,
+        "hardValue": 1,
+        "basicStrategy": "Always hit on soft totals, stand on hard totals 17+"
+      }
+    }
+  }
+}
