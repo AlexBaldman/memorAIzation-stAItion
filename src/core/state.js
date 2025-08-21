@@ -12,7 +12,11 @@ class MemoryState {
         currentNumber: null,
         selectedCard: null,
         practiceMode: false,
-        difficulty: 'normal'
+        difficulty: 'normal',
+        data: null,
+        lookup: null,
+        initialized: false,
+        statistics: { totalPractices: 0, correctRecalls: 0 }
       },
       
       // Dice practice state
@@ -32,7 +36,12 @@ class MemoryState {
         model: 'stabilityai/stable-diffusion-2',
         token: null,
         imageCache: new Map(),
-        generationQueue: []
+        generationQueue: [],
+        queueLength: 0,
+        currentGeneration: null,
+        cacheStats: { hits: 0, misses: 0, total: 0 },
+        providerStats: {},
+        performanceMetrics: {}
       },
       
       // UI state
@@ -52,7 +61,13 @@ class MemoryState {
         lastRenderTime: 0,
         memoryUsage: 0,
         interactionLatency: []
-      }
+      },
+      
+      // Image manifest
+      imageManifest: {},
+      
+      // Current active system
+      activeSystem: 'pao'
     };
     
     // Subscribers for reactive updates
@@ -61,6 +76,47 @@ class MemoryState {
     // Performance monitoring
     this.performanceObserver = null;
     this.initPerformanceMonitoring();
+    
+    // Load persisted state from localStorage
+    this.loadPersistedState();
+  }
+  
+  // Load persisted state from localStorage
+  loadPersistedState() {
+    try {
+      // Load AI configuration
+      const aiProvider = localStorage.getItem('ai-provider');
+      const aiModel = localStorage.getItem('ai-model');
+      if (aiProvider) this.state.ai.provider = aiProvider;
+      if (aiModel) this.state.ai.model = aiModel;
+      
+      // Load UI preferences
+      const theme = localStorage.getItem('theme');
+      if (theme) this.state.ui.theme = theme;
+      
+      // Load dice session
+      const diceSession = localStorage.getItem('dice-session');
+      if (diceSession) {
+        try {
+          this.state.dice.session = JSON.parse(diceSession);
+        } catch (e) {
+          console.warn('Failed to parse dice session from localStorage');
+        }
+      }
+      
+    } catch (error) {
+      console.warn('Failed to load persisted state:', error);
+    }
+  }
+  
+  // Save state to localStorage
+  saveToLocalStorage(path, value) {
+    try {
+      const key = `state_${path.replace(/\./g, '_')}`;
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.warn('Failed to save to localStorage:', error);
+    }
   }
   
   // Get state with path support (e.g., 'pao.currentNumber')
@@ -78,6 +134,11 @@ class MemoryState {
       const oldValue = target[lastKey];
       target[lastKey] = value;
       
+      // Persist to localStorage for important state
+      if (this.shouldPersist(path)) {
+        this.saveToLocalStorage(path, value);
+      }
+      
       // Notify subscribers of change
       this.notifySubscribers(path, value, oldValue);
       
@@ -87,6 +148,20 @@ class MemoryState {
       return true;
     }
     return false;
+  }
+  
+  // Check if a path should be persisted to localStorage
+  shouldPersist(path) {
+    const persistPaths = [
+      'ai.provider',
+      'ai.model',
+      'ui.theme',
+      'ui.cardLayout',
+      'ui.accessibility.highContrast',
+      'ui.accessibility.reducedMotion',
+      'ui.accessibility.fontSize'
+    ];
+    return persistPaths.includes(path);
   }
   
   // Subscribe to state changes
@@ -205,11 +280,13 @@ class MemoryState {
   // Reset state to initial values
   reset() {
     this.state = {
-      pao: { currentNumber: null, selectedCard: null, practiceMode: false, difficulty: 'normal' },
+      pao: { currentNumber: null, selectedCard: null, practiceMode: false, difficulty: 'normal', data: null, lookup: null, initialized: false, statistics: { totalPractices: 0, correctRecalls: 0 } },
       dice: { session: [], currentRoll: null, statistics: { totalRolls: 0, correctRecalls: 0, averageResponseTime: 0 } },
-      ai: { provider: 'hf', model: 'stabilityai/stable-diffusion-2', token: null, imageCache: new Map(), generationQueue: [] },
+      ai: { provider: 'hf', model: 'stabilityai/stable-diffusion-2', token: null, imageCache: new Map(), generationQueue: [], queueLength: 0, currentGeneration: null, cacheStats: { hits: 0, misses: 0, total: 0 }, providerStats: {}, performanceMetrics: {} },
       ui: { theme: 'default', cardLayout: 'grid', animations: true, accessibility: { highContrast: false, reducedMotion: false, fontSize: 'medium' } },
-      performance: { lastRenderTime: 0, memoryUsage: 0, interactionLatency: [] }
+      performance: { lastRenderTime: 0, memoryUsage: 0, interactionLatency: [] },
+      imageManifest: {},
+      activeSystem: 'pao'
     };
     
     // Notify all subscribers of reset

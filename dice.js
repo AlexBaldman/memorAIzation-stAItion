@@ -1,4 +1,6 @@
-// Dice component – vanilla JS
+// Dice component – enhanced with new architecture integration
+import memoryState from './src/core/state.js';
+
 class Die {
   constructor(sides, container, label) {
     this.sides = sides;
@@ -9,11 +11,13 @@ class Die {
     container.appendChild(this.el);
     this.render();
   }
+  
   roll() {
     this.value = Math.floor(Math.random() * this.sides);
     this.render();
     return this.value;
   }
+  
   render() {
     this.el.textContent = this.value;
   }
@@ -22,19 +26,28 @@ class Die {
 export function initDicePractice() {
   const sec = document.getElementById('dice-section');
   if (!sec) return;
+  
   const container = document.getElementById('dice-container');
   const rollBtn = document.getElementById('roll-btn');
   const resultEl = document.getElementById('roll-result');
 
   // two D6 standard + two D10 for PAO
-  const dice = [new Die(6, container, 'd6-1'), new Die(6, container, 'd6-2'), new Die(10, container, 'd10-1'), new Die(10, container, 'd10-2')];
+  const dice = [
+    new Die(6, container, 'd6-1'), 
+    new Die(6, container, 'd6-2'), 
+    new Die(10, container, 'd10-1'), 
+    new Die(10, container, 'd10-2')
+  ];
 
-  const sessionKey = 'dice-session';
+  // Load session from state management
   function loadSession() {
-    return JSON.parse(localStorage.getItem(sessionKey) || '[]');
+    return memoryState.get('dice.session') || [];
   }
+  
   function saveSession(arr) {
-    localStorage.setItem(sessionKey, JSON.stringify(arr));
+    memoryState.set('dice.session', arr);
+    // Also save to localStorage for backward compatibility
+    localStorage.setItem('dice-session', JSON.stringify(arr));
   }
 
   // session modal
@@ -51,26 +64,56 @@ export function initDicePractice() {
       modalList.appendChild(li);
     });
   }
+  
   historyBtn.addEventListener('click', () => {
     renderSession();
     modal.classList.remove('hidden');
   });
+  
   closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
 
   rollBtn.addEventListener('click', () => {
+    const startTime = performance.now();
+    
     const timestamp = Date.now();
     const rolls = dice.map(d => {
       const val = d.roll();
       d.el.classList.add('shake');
-      setTimeout(()=>d.el.classList.remove('shake'),600);
+      setTimeout(() => d.el.classList.remove('shake'), 600);
       return val;
     });
+    
     const twoDigit = rolls[2] * 10 + rolls[3];
     resultEl.textContent = `PAO Number: ${String(twoDigit).padStart(2, '0')}`;
+    
     const session = loadSession();
-    session.push({ rolls, twoDigit, timestamp });
+    const newRoll = { rolls, twoDigit, timestamp };
+    session.push(newRoll);
     saveSession(session);
+    
+    // Update state management
+    memoryState.set('dice.currentRoll', newRoll);
+    
+    // Update statistics
+    const stats = memoryState.get('dice.statistics') || { totalRolls: 0, correctRecalls: 0, averageResponseTime: 0 };
+    stats.totalRolls++;
+    
+    const endTime = performance.now();
+    const responseTime = endTime - startTime;
+    
+    // Calculate new average response time
+    if (stats.averageResponseTime === 0) {
+      stats.averageResponseTime = responseTime;
+    } else {
+      stats.averageResponseTime = (stats.averageResponseTime + responseTime) / 2;
+    }
+    
+    memoryState.set('dice.statistics', stats);
+    
+    // Log performance
+    console.log(`🎲 Dice roll: ${twoDigit} (${rolls.join(',')}) - Response time: ${responseTime.toFixed(2)}ms`);
   });
 }
 
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', initDicePractice);

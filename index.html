@@ -16,6 +16,8 @@
   <div class="max-w-6xl mx-auto text-center mb-8">
     <h1 class="text-4xl md:text-6xl font-bold text-red-400 drop-shadow-lg">memor<span class="text-blue-400">AI</span>zation st<span class="text-blue-400">AI</span>tion</h1>
     <h2 class="text-xl md:text-2xl text-blue-300 mt-2">Celebrity Initials Deck (AI-powered)</h2>
+    
+    <!-- AI Configuration -->
     <div class="mt-4 flex flex-col md:flex-row items-center justify-center gap-2 text-sm">
       <label class="flex items-center gap-2">Provider
         <select id="ai-provider" class="text-zinc-800 rounded px-2 py-1">
@@ -28,6 +30,48 @@
       </label>
       <button id="save-ai-config" class="px-3 py-1 rounded bg-zinc-600 hover:bg-zinc-500">Save</button>
     </div>
+    
+    <!-- Accessibility Controls -->
+    <div class="mt-4 flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="high-contrast" class="rounded" />
+        High Contrast
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="reduced-motion" class="rounded" />
+        Reduced Motion
+      </label>
+      <label class="flex items-center gap-2">
+        Font Size
+        <select id="font-size" class="text-zinc-800 rounded px-2 py-1">
+          <option value="small">Small</option>
+          <option value="medium" selected>Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </label>
+      <button id="performance-toggle" class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-xs">
+        Show Performance
+      </button>
+    </div>
+  </div>
+
+  <!-- Performance Dashboard (Hidden by default) -->
+  <div id="performance-dashboard" class="max-w-6xl mx-auto mb-6 bg-zinc-800/50 rounded-lg p-4 hidden">
+    <h3 class="text-lg font-semibold mb-3">Performance Dashboard</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+      <div class="bg-zinc-700/50 rounded p-3">
+        <h4 class="font-semibold mb-2">Memory Systems</h4>
+        <div id="memory-stats" class="space-y-1 text-xs"></div>
+      </div>
+      <div class="bg-zinc-700/50 rounded p-3">
+        <h4 class="font-semibold mb-2">AI Service</h4>
+        <div id="ai-stats" class="space-y-1 text-xs"></div>
+      </div>
+      <div class="bg-zinc-700/50 rounded p-3">
+        <h4 class="font-semibold mb-2">Performance</h4>
+        <div id="perf-stats" class="space-y-1 text-xs"></div>
+      </div>
+    </div>
   </div>
 
   <div id="card-container" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
@@ -39,8 +83,14 @@
     <div class="flex justify-center gap-4 mb-4">
       <button id="roll-btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded">Roll</button>
       <button id="history-btn" class="px-4 py-2 bg-zinc-500 hover:bg-zinc-600 rounded">History</button>
+      <button id="clear-history" class="px-4 py-2 bg-red-500 hover:bg-red-600 rounded">Clear History</button>
     </div>
     <p id="roll-result" class="mt-4 text-lg"></p>
+    
+    <!-- Dice Statistics -->
+    <div class="mt-4 text-sm text-zinc-300">
+      <div id="dice-stats" class="space-y-1"></div>
+    </div>
   </section>
 
   <!-- Pegboard section -->
@@ -49,38 +99,6 @@
     <div id="pegboard" class="max-w-lg mx-auto grid grid-cols-5 gap-4"></div>
   </section>
 
-  <template id="card-template">
-    <div class="card w-full h-80 [perspective:1000px] cursor-pointer">
-      <div class="card-inner relative w-full h-full duration-700 [transform-style:preserve-3d]">
-
-        <!-- front -->
-        <div class="card-face absolute inset-0 bg-gradient-to-b from-zinc-50 to-zinc-200 rounded-xl p-3 flex flex-col justify-between border shadow-lg">
-          <div class="flex justify-between text-slate-900 text-lg font-bold">
-            <span class="card-number"></span>
-            <span class="card-initials text-red-600"></span>
-          </div>
-          <div class="card-image h-40 bg-black rounded-md overflow-hidden">
-            <img class="w-full h-full object-cover" loading="lazy" />
-          </div>
-          <div class="card-name text-center text-slate-900 font-semibold text-sm truncate"></div>
-        </div>
-
-        <!-- back -->
-        <div class="card-face absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl text-center text-sm flex flex-col items-center justify-center text-white px-4 [transform:rotateY(180deg)]">
-          <p class="card-description leading-relaxed"></p>
-          <div class="mt-4 flex gap-2">
-            <button class="generate-btn px-3 py-1 bg-red-500 hover:bg-red-600 text-xs rounded">Generate new image</button>
-            <button class="edit-btn px-3 py-1 bg-amber-500 hover:bg-amber-600 text-xs rounded">Edit image (AI)</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-
-  <script type="module" src="main.js"></script>
-  <script type="module" src="dice.js"></script>
-  <script type="module" src="pegboard.js"></script>
-  
   <!-- Theme Builder section -->
   <section id="theme-builder" class="mt-12 max-w-6xl mx-auto">
     <h3 class="text-2xl font-semibold mb-4 text-center">Theme Builder (alpha)</h3>
@@ -105,15 +123,83 @@
       </div>
     </div>
   </section>
-  <script type="module" src="theme-builder.js"></script>
-<!-- Session History Modal -->
-<div id="session-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
-  <div class="bg-white rounded p-4 max-w-md w-full text-zinc-800">
-    <h4 class="text-lg font-semibold mb-2">Roll History</h4>
-    <ul id="session-list" class="space-y-1 max-h-64 overflow-y-auto text-sm"></ul>
-    <button id="close-modal" class="mt-4 px-3 py-1 bg-red-500 text-white rounded">Close</button>
-  </div>
-</div>
 
+  <!-- Session History Modal -->
+  <div id="session-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
+    <div class="bg-white rounded p-4 max-w-md w-full text-zinc-800">
+      <h4 class="text-lg font-semibold mb-2">Roll History</h4>
+      <ul id="session-list" class="space-y-1 max-h-64 overflow-y-auto text-sm"></ul>
+      <button id="close-modal" class="mt-4 px-3 py-1 bg-red-500 text-white rounded">Close</button>
+    </div>
+  </div>
+
+  <!-- Accessibility Info Modal -->
+  <div id="accessibility-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
+    <div class="bg-white rounded p-4 max-w-md w-full text-zinc-800">
+      <h4 class="text-lg font-semibold mb-2">Accessibility Features</h4>
+      <div class="space-y-2 text-sm">
+        <p><strong>Keyboard Navigation:</strong> Use Tab, Enter, and Space to navigate cards</p>
+        <p><strong>Screen Reader:</strong> Full ARIA support for assistive technologies</p>
+        <p><strong>High Contrast:</strong> Enhanced visibility for low vision users</p>
+        <p><strong>Reduced Motion:</strong> Disable animations for motion-sensitive users</p>
+        <p><strong>Font Scaling:</strong> Adjustable text size for better readability</p>
+      </div>
+      <button id="close-accessibility" class="mt-4 px-3 py-1 bg-blue-500 text-white rounded">Close</button>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+  <script type="module" src="dice.js"></script>
+  <script type="module" src="pegboard.js"></script>
+  <script type="module" src="theme-builder.js"></script>
+  
+  <!-- Accessibility Controls Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // High contrast toggle
+      const highContrastCheckbox = document.getElementById('high-contrast');
+      highContrastCheckbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          document.body.classList.add('high-contrast');
+        } else {
+          document.body.classList.remove('high-contrast');
+        }
+      });
+      
+      // Reduced motion toggle
+      const reducedMotionCheckbox = document.getElementById('reduced-motion');
+      reducedMotionCheckbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          document.body.classList.add('reduced-motion');
+        } else {
+          document.body.classList.remove('reduced-motion');
+        }
+      });
+      
+      // Font size selector
+      const fontSizeSelect = document.getElementById('font-size');
+      fontSizeSelect.addEventListener('change', (e) => {
+        const size = e.target.value;
+        document.documentElement.style.setProperty('--base-font-size', size);
+      });
+      
+      // Performance toggle
+      const performanceToggle = document.getElementById('performance-toggle');
+      const performanceDashboard = document.getElementById('performance-dashboard');
+      performanceToggle.addEventListener('click', () => {
+        performanceDashboard.classList.toggle('hidden');
+        performanceToggle.textContent = performanceDashboard.classList.contains('hidden') ? 'Show Performance' : 'Hide Performance';
+      });
+      
+      // Clear dice history
+      const clearHistoryBtn = document.getElementById('clear-history');
+      clearHistoryBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear all dice history?')) {
+          localStorage.removeItem('dice-session');
+          location.reload();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
