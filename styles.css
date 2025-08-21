@@ -1,0 +1,19 @@
+/* Extra styles and flip animation */
+@keyframes shake {
+  0%,100% { transform: translate(0) rotate(0deg); }
+  25% { transform: translate(2px) rotate(5deg); }
+  50% { transform: translate(-2px) rotate(-5deg); }
+  75% { transform: translate(2px) rotate(5deg); }
+}
+.die.shake { animation: shake 0.6s ease-in-out; }
+
+.card-inner {
+  transform-style: preserve-3d;
+}
+.card.flip .card-inner,
+.card-inner.flip {
+  transform: rotateY(180deg);
+}
+.card-face {
+  backface-visibility: hidden;
+}

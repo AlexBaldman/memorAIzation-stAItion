@@ -1,0 +1,12 @@
+[
+  { "number": 0, "name": "Donut", "emoji": "🍩" },
+  { "number": 1, "name": "Pencil", "emoji": "✏️" },
+  { "number": 2, "name": "Swan", "emoji": "🦢" },
+  { "number": 3, "name": "Handcuffs", "emoji": "🔗" },
+  { "number": 4, "name": "Sailboat", "emoji": "⛵" },
+  { "number": 5, "name": "Hook", "emoji": "🪝" },
+  { "number": 6, "name": "Elephant", "emoji": "🐘" },
+  { "number": 7, "name": "Axe", "emoji": "🪓" },
+  { "number": 8, "name": "Hourglass", "emoji": "⏳" },
+  { "number": 9, "name": "Balloon", "emoji": "🎈" }
+]

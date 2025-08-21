@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>memorAIzation stAItion – Celebrity Initials Deck</title>
+
+  <!-- TailwindCSS CDN for rapid styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-800 to-slate-600 p-4 text-white font-mono">
+  
+  <div class="max-w-6xl mx-auto text-center mb-8">
+    <h1 class="text-4xl md:text-6xl font-bold text-red-400 drop-shadow-lg">memor<span class="text-blue-400">AI</span>zation st<span class="text-blue-400">AI</span>tion</h1>
+    <h2 class="text-xl md:text-2xl text-blue-300 mt-2">Celebrity Initials Deck (AI-powered)</h2>
+  </div>
+
+  <div id="card-container" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
+
+  <!-- Dice practice section -->
+  <section id="dice-section" class="mt-10 text-center">
+    <h3 class="text-2xl font-semibold mb-4">Dice Practice</h3>
+    <div id="dice-container" class="flex justify-center gap-4 mb-4"></div>
+    <div class="flex justify-center gap-4 mb-4">
+      <button id="roll-btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded">Roll</button>
+      <button id="history-btn" class="px-4 py-2 bg-zinc-500 hover:bg-zinc-600 rounded">History</button>
+    </div>
+    <p id="roll-result" class="mt-4 text-lg"></p>
+  </section>
+
+  <!-- Pegboard section -->
+  <section id="peg-section" class="mt-10 text-center">
+    <h3 class="text-2xl font-semibold mb-4">Peg System (0-9)</h3>
+    <div id="pegboard" class="max-w-lg mx-auto grid grid-cols-5 gap-4"></div>
+  </section>
+
+  <template id="card-template">
+    <div class="card w-full h-80 [perspective:1000px] cursor-pointer">
+      <div class="card-inner relative w-full h-full duration-700 [transform-style:preserve-3d]">
+
+        <!-- front -->
+        <div class="card-face absolute inset-0 bg-gradient-to-b from-zinc-50 to-zinc-200 rounded-xl p-3 flex flex-col justify-between border shadow-lg">
+          <div class="flex justify-between text-slate-900 text-lg font-bold">
+            <span class="card-number"></span>
+            <span class="card-initials text-red-600"></span>
+          </div>
+          <div class="card-image h-40 bg-black rounded-md overflow-hidden">
+            <img class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="card-name text-center text-slate-900 font-semibold text-sm truncate"></div>
+        </div>
+
+        <!-- back -->
+        <div class="card-face absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl text-center text-sm flex flex-col items-center justify-center text-white px-4 [transform:rotateY(180deg)]">
+          <p class="card-description leading-relaxed"></p>
+          <button class="generate-btn mt-4 px-3 py-1 bg-red-500 hover:bg-red-600 text-xs rounded">Generate new image</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script type="module" src="main.js"></script>
+  <script type="module" src="dice.js"></script>
+  <script type="module" src="pegboard.js"></script>
+<!-- Session History Modal -->
+<div id="session-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
+  <div class="bg-white rounded p-4 max-w-md w-full text-zinc-800">
+    <h4 class="text-lg font-semibold mb-2">Roll History</h4>
+    <ul id="session-list" class="space-y-1 max-h-64 overflow-y-auto text-sm"></ul>
+    <button id="close-modal" class="mt-4 px-3 py-1 bg-red-500 text-white rounded">Close</button>
+  </div>
+</div>
+
+</body>
+</html>

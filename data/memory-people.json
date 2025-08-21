@@ -1,0 +1,1002 @@
+{
+    "00": {
+      "number": "00",
+      "initials": "OO",
+      "name": "Ozzy Osbourne",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Ozzy_Osbourne_wax_figure_Hollywood_crop.jpg",
+      "emoji": "🦇",
+      "action": "biting the head off",
+      "object": "bat",
+      "emojiStory": "🎤🦇😲🤮🎸"
+    },
+    "01": {
+      "number": "01",
+      "initials": "OA",
+      "name": "Orphan Annie",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/Little_orphan_annie_1930s_comic_strip.png",
+      "emoji": "🎶",
+      "action": "singing cheerfully",
+      "object": "red dress",
+      "emojiStory": "🎶☀️👧🔗💰"
+    },
+    "02": {
+      "number": "02",
+      "initials": "OB",
+      "name": "Obi Wan Kenobi",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Ben_Kenobi_Lightsaber_Duel.png/375px-Ben_Kenobi_Lightsaber_Duel.png",
+      "emoji": "🗡️",
+      "action": "waving his hand to use the Force",
+      "object": "lightsaber",
+      "emojiStory": "🌌⚔️👻"
+    },
+    "03": {
+      "number": "03",
+      "initials": "OU",
+      "name": "Osi Umenyiora",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Osi_Umenyiora_Giants.JPG/300px-Osi_Umenyiora_Giants.JPG",
+      "emoji": "🏈",
+      "action": "sacking a quarterback",
+      "object": "football helmet",
+      "emojiStory": "🏈💥😵"
+    },
+    "04": {
+      "number": "04",
+      "initials": "OD",
+      "name": "Oscar De La Hoya",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Oscar_De_La_Hoya_Mayweather.jpg/300px-Oscar_De_La_Hoya_Mayweather.jpg",
+      "emoji": "🥊",
+      "action": "throwing a left hook",
+      "object": "championship belt",
+      "emojiStory": "🥊💥🏆"
+    },
+    "05": {
+      "number": "05",
+      "initials": "OE",
+      "name": "Omar Epps",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Omar_Epps_ER.jpg/300px-Omar_Epps_ER.jpg",
+      "emoji": "🏈",
+      "action": "acting on the field",
+      "object": "playbook",
+      "emojiStory": "🏈🎬📖"
+    },
+    "06": {
+      "number": "06",
+      "initials": "OS",
+      "name": "OJ Simpson",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/OJ_Simpson_Bronco_chase.jpg/300px-OJ_Simpson_Bronco_chase.jpg",
+      "emoji": "🧤🚔",
+      "action": "trying on a glove that doesn't fit after a car chase",
+      "object": "leather glove",
+      "emojiStory": "🚗🚨🧤🤷‍♂️"
+    },
+    "07": {
+      "number": "07",
+      "initials": "OG",
+      "name": "Oscar the Grouch",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Oscar_the_Grouch_Trash_Can_leaning.png/300px-Oscar_the_Grouch_Trash_Can_leaning.png",
+      "emoji": "🗑️😾",
+      "action": "popping out of a trash can and complaining",
+      "object": "banana peel",
+      "emojiStory": "🗑️😡🍌🪰"
+    },
+    "08": {
+      "number": "08",
+      "initials": "OH",
+      "name": "Owen Hart",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Owen_Hart_King_of_Harts.jpg/300px-Owen_Hart_King_of_Harts.jpg",
+      "emoji": "🤼🤕",
+      "action": "falling from the rafters in a wrestling stunt gone wrong",
+      "object": "wrestling ring",
+      "emojiStory": "🤼⬇️🪽😇"
+    },
+    "09": {
+      "number": "09",
+      "initials": "ON",
+      "name": "Oliver North",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Oliver_North_testifies_before_Congress_1987.jpg/300px-Oliver_North_testifies_before_Congress_1987.jpg",
+      "emoji": "📜🔥",
+      "action": "shredding documents then claiming ignorance",
+      "object": "top-secret file",
+      "emojiStory": "📜✂️🔥🤫"
+    },
+    "10": {
+      "number": "10",
+      "initials": "AO",
+      "name": "Annie Oakley",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Annie_Oakley_Buffalo_Bill_show.jpg/300px-Annie_Oakley_Buffalo_Bill_show.jpg",
+      "emoji": "🔫🎯",
+      "action": "shooting a playing card in mid-air with style",
+      "object": "revolver",
+      "emojiStory": "🤠🔫🃏💯"
+    },
+    "11": {
+      "number": "11",
+      "initials": "AA",
+      "name": "Andre Agassi",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Andre_Agassi_mullet_wig.jpg/300px-Andre_Agassi_mullet_wig.jpg",
+      "emoji": "🎾💥",
+      "action": "smashing a tennis ball and breaking his racket in frustration",
+      "object": "tennis racket",
+      "emojiStory": "🎾💥😡🤬"
+    },
+    "12": {
+      "number": "12",
+      "initials": "AB",
+      "name": "Al Bundy",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Married_..._with_Children_cast_photo.JPG/300px-Married_..._with_Children_cast_photo.JPG",
+      "emoji": "🛋️💨",
+      "action": "sitting on the couch with his hand in his pants, farting",
+      "object": "remote control",
+      "emojiStory": "🛋️🍺📺🧦"
+    },
+    "13": {
+      "number": "13",
+      "initials": "AC",
+      "name": "Aleister Crowley",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Leigh_Van_Valen_as_Aleister_Crowley.jpg/300px-Leigh_Van_Valen_as_Aleister_Crowley.jpg",
+      "emoji": "📰😈",
+      "action": "casting a dark ritual while reading occult texts",
+      "object": "pentagram",
+      "emojiStory": "🕯️🔺👁️📖"
+    },
+    "14": {
+      "number": "14",
+      "initials": "AD",
+      "name": "Abner Doubleday",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Abner_Doubleday_Grave.JPG/300px-Abner_Doubleday_Grave.JPG",
+      "emoji": "⚾📏",
+      "action": "drawing a baseball field and claiming he invented baseball",
+      "object": "baseball bat",
+      "emojiStory": "⚾📝🏟️🧢"
+    },
+    "15": {
+      "number": "15",
+      "initials": "AE",
+      "name": "Albert Einstein",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Einstein_tongue.jpg/300px-Einstein_tongue.jpg",
+      "emoji": "🧮🤯",
+      "action": "writing E=mc² and blowing minds",
+      "object": "chalkboard",
+      "emojiStory": "🧠📝💡💥"
+    },
+    "16": {
+      "number": "16",
+      "initials": "AS",
+      "name": "Arnold Schwarzenegger",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Arnold_Schwarzenegger_bodybuilding_1970s.jpg/300px-Arnold_Schwarzenegger_bodybuilding_1970s.jpg",
+      "emoji": "💪🤖",
+      "action": "flexing and saying 'I'll be back' in a robotic voice",
+      "object": "dumbbell",
+      "emojiStory": "💪🤖🚁💥"
+    },
+    "17": {
+      "number": "17",
+      "initials": "AG",
+      "name": "Ali G",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Ali_G_in_Da_Bang_Manga.jpg/300px-Ali_G_in_Da_Bang_Manga.jpg",
+      "emoji": "🤙😂",
+      "action": "throwing up a 'respect' sign while being completely clueless",
+      "object": "yellow tracksuit",
+      "emojiStory": "🤙😂🎤❓"
+    },
+    "18": {
+      "number": "18",
+      "initials": "AH",
+      "name": "Adolf Hitler",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bundesarchiv_Bild_183-H1216-3005-002%2C_Adolf_Hitler_als_Frontsoldat.jpg/300px-Bundesarchiv_Bild_183-H1216-3005-002%2C_Adolf_Hitler_als_Frontsoldat.jpg",
+      "emoji": "✋😠",
+      "action": "shouting in German with spittle flying",
+      "object": "tiny mustache",
+      "emojiStory": "✋😠🔥🌍"
+    },
+    "19": {
+      "number": "19",
+      "initials": "AN",
+      "name": "Aaron Neville",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Aaron_Neville_performing_2007.jpg/300px-Aaron_Neville_performing_2007.jpg",
+      "emoji": "🎤💖",
+      "action": "singing in falsetto with his heart on his sleeve",
+      "object": "microphone",
+      "emojiStory": "🎤🎶💖🥺"
+    },
+    "20": {
+      "number": "20",
+      "initials": "BO",
+      "name": "Bill O'Reilly",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Bill_O%27Reilly_in_2014.jpg/300px-Bill_O%27Reilly_in_2014.jpg",
+      "emoji": "😡👴",
+      "action": "ranting about liberals and shouting 'Tide comes in, tide goes out'",
+      "object": "microphone",
+      "emojiStory": "😡👴🎤🌊"
+    },
+    "21": {
+      "number": "21",
+      "initials": "BA",
+      "name": "Britney Spears",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Britney_Spears_VMAs_2001_Snake.jpg/300px-Britney_Spears_VMAs_2001_Snake.jpg",
+      "emoji": "🎤💃",
+      "action": "hitting a high note and doing a hair flip",
+      "object": "microphone",
+      "emojiStory": "🎤💃💥🐍"
+    },
+    "22": {
+      "number": "22",
+      "initials": "BB",
+      "name": "Bill Belichick",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Bill_Belichick_Super_Bowl_XLIX_opening_night.jpg/300px-Bill_Belichick_Super_Bowl_XLIX_opening_night.jpg",
+      "emoji": "🏈🤨",
+      "action": "coaching a game with a hoodie and a perpetually unimpressed look",
+      "object": "clipboard",
+      "emojiStory": "🏈🤨🏆✂️"
+    },
+    "23": {
+      "number": "23",
+      "initials": "BC",
+      "name": "Bill Clinton",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/President_Clinton_playing_the_saxophone_at_the_MTV_inaugural_ball_in_1993.jpg/300px-President_Clinton_playing_the_saxophone_at_the_MTV_inaugural_ball_in_1993.jpg",
+      "emoji": "🎷😎",
+      "action": "playing the saxophone late night and charming everyone",
+      "object": "cigar",
+      "emojiStory": "🎷😎🔥🍔"
+    },
+    "24": {
+      "number": "24",
+      "initials": "BD",
+      "name": "Bill Duke",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Predator_cast.jpg/300px-Predator_cast.jpg",
+      "emoji": "🎬💥",
+      "action": "directing a scene with explosive action",
+      "object": "movie camera",
+      "emojiStory": "🎬🎥💥🕶️"
+    },
+    "25": {
+      "number": "25",
+      "initials": "BE",
+      "name": "Billy Eichner",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Billy_on_the_Street_Emmy_Awards_2014.jpg/300px-Billy_on_the_Street_Emmy_Awards_2014.jpg",
+      "emoji": "🎤😡😂",
+      "action": "yelling at strangers on the street in a hilarious rage",
+      "object": "microphone",
+      "emojiStory": "🎤😡😂🗽"
+    },
+    "26": {
+      "number": "26",
+      "initials": "BS",
+      "name": "Bruce Springsteen",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Bruce_Springsteen_WSOA_2012_%28cropped%29.jpg/300px-Bruce_Springsteen_WSOA_2012_%28cropped%29.jpg",
+      "emoji": "🎸🎤",
+      "action": "rocking out on stage with his guitar and gravelly voice",
+      "object": "guitar",
+      "emojiStory": "🎸🎤🔥🇺🇸"
+    },
+    "27": {
+      "number": "27",
+      "initials": "BG",
+      "name": "Bob Geldof",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bob_Geldof_Live_Aid.jpg/300px-Bob_Geldof_Live_Aid.jpg",
+      "emoji": "🎤🌍",
+      "action": "singing for a cause and saving the world (maybe)",
+      "object": "microphone",
+      "emojiStory": "🎤🌍🎶🙏"
+    },
+    "28": {
+      "number": "28",
+      "initials": "BH",
+      "name": "Bill Hicks",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Bill_Hicks_1992.jpg/300px-Bill_Hicks_1992.jpg",
+      "emoji": "🎤🚬",
+      "action": "smoking on stage and blowing your mind with dark comedy",
+      "object": "cigarette",
+      "emojiStory": "🎤🚬😂🤯"
+    },
+    "29": {
+      "number": "29",
+      "initials": "BN",
+      "name": "Bob Newhart",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Bob_Newhart_Show_Promo.JPG/300px-Bob_Newhart_Show_Promo.JPG",
+      "emoji": "📞🤨",
+      "action": "talking on the phone with a confused but patient expression",
+      "object": "telephone",
+      "emojiStory": "📞😂👂🤔"
+    },
+    "30": {
+      "number": "30",
+      "initials": "CO",
+      "name": "Chris O'Donnell",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Batman_Forever_Chris_O%27Donnell_as_Robin.jpg/300px-Batman_Forever_Chris_O%27Donnell_as_Robin.jpg",
+      "emoji": "🎭🪶",
+      "action": "playing Robin and awkwardly saying 'Holy _____, Batman!'",
+      "object": "Robin mask",
+      "emojiStory": "🦹‍♂️🦸‍♂️🎭❓"
+    },
+    "31": {
+      "number": "31",
+      "initials": "CA",
+      "name": "Cardi B",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Cardi_B_by_iHeartRadio_Z100_New_York.jpg/300px-Cardi_B_by_iHeartRadio_Z100_New_York.jpg",
+      "emoji": "💅🤑",
+      "action": "saying 'Okurrr' while showing off her long, bejeweled nails",
+      "object": "long fingernails",
+      "emojiStory": "🎤💅🤑🐅"
+    },
+    "32": {
+      "number": "32",
+      "initials": "CB",
+      "name": "Christian Bale",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Christian_Bale_Cannes_2022.jpg/300px-Christian_Bale_Cannes_2022.jpg",
+      "emoji": "🦇😠",
+      "action": "brooding as Batman and whispering in a gravelly voice",
+      "object": "Batman cowl",
+      "emojiStory": "🦇🌃😠🗣️"
+    },
+    "33": {
+      "number": "33",
+      "initials": "CC",
+      "name": "Charlie Chaplin",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Charlie_Chaplin.png/300px-Charlie_Chaplin.png",
+      "emoji": "🚶😂",
+      "action": "doing the 'Little Tramp' walk and tripping over nothing",
+      "object": "bowler hat",
+      "emojiStory": "🚶😂🎬🥹"
+    },
+    "34": {
+      "number": "34",
+      "initials": "CD",
+      "name": "Celine Dion",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Celine_Dion_Let%27s_Talk_About_Love.png/300px-Celine_Dion_Let%27s_Talk_About_Love.png",
+      "emoji": "🚢💔",
+      "action": "singing 'My Heart Will Go On' with dramatic hand gestures",
+      "object": "heart of the ocean necklace",
+      "emojiStory": "🎤🚢💔😭"
+    },
+    "35": {
+      "number": "35",
+      "initials": "CE",
+      "name": "Clint Eastwood",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Clint_Eastwood_Dirty_Harry.jpg/300px-Clint_Eastwood_Dirty_Harry.jpg",
+      "emoji": "🤠🔫",
+      "action": "squinting and pointing a gun while saying 'Get off my lawn'",
+      "object": "cowboy hat",
+      "emojiStory": "🤠🔫😠👴"
+    },
+    "36": {
+      "number": "36",
+      "initials": "CS",
+      "name": "Chevy Chase",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chevy_Chase_Christmas_Vacation.jpg/300px-Chevy_Chase_Christmas_Vacation.jpg",
+      "emoji": "🤪🤕",
+      "action": "doing a pratfall after slipping on an invisible banana peel",
+      "object": "invisible banana peel",
+      "emojiStory": "🤪🍌🤕😂"
+    },
+    "37": {
+      "number": "37",
+      "initials": "CG",
+      "name": "Conan O'Brien",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Conan_OBrien_Late_Night_set.jpg/300px-Conan_OBrien_Late_Night_set.jpg",
+      "emoji": "🔥🐻",
+      "action": "destroying his set with the Masturbating Bear in tow",
+      "object": "masturbating bear",
+      "emojiStory": "🐻🔥😂🎤"
+    },
+    "38": {
+      "number": "38",
+      "initials": "CH",
+      "name": "Cameron Highlands",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Tea_Plantations_in_Cameron_Highlands.jpg/300px-Tea_Plantations_in_Cameron_Highlands.jpg",
+      "emoji": "⛰️☕",
+      "action": "sipping tea in a lush plantation and enjoying the view",
+      "object": "tea cup",
+      "emojiStory": "⛰️☕😌🌿"
+    },
+    "39": {
+      "number": "39",
+      "initials": "CN",
+      "name": "Cristiano Ronaldo",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Cristiano_Ronaldo_Real_Madrid.jpg/300px-Cristiano_Ronaldo_Real_Madrid.jpg",
+      "emoji": "⚽🐐💪",
+      "action": "doing a bicycle kick and posing dramatically",
+      "object": "soccer ball",
+      "emojiStory": "⚽🐐💪✨"
+    },
+    "40": {
+      "number": "40",
+      "initials": "DO",
+      "name": "Danny DeVito",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Danny_DeVito_Twins_1988.JPG/300px-Danny_DeVito_Twins_1988.JPG",
+      "emoji": "🧌🍖",
+      "action": "eating a rum ham with gusto as Frank Reynolds",
+      "object": "rum ham",
+      "emojiStory": "🧌🍖😂🍺"
+    },
+    "41": {
+      "number": "41",
+      "initials": "DA",
+      "name": "Drew Barrymore",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Drew_Barrymore_ET.jpg/300px-Drew_Barrymore_ET.jpg",
+      "emoji": "👧👽",
+      "action": "befriending E.T. and pointing at the sky",
+      "object": "E.T. finger",
+      "emojiStory": "👧👽🤝🚲"
+    },
+    "42": {
+      "number": "42",
+      "initials": "DB",
+      "name": "David Bowie",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/DavidBowie1974.JPG/300px-DavidBowie1974.JPG",
+      "emoji": "⚡🎸",
+      "action": "as Ziggy Stardust playing guitar with otherworldly glam",
+      "object": "lightning bolt face paint",
+      "emojiStory": "🎸⚡👨‍🎤🚀"
+    },
+    "43": {
+      "number": "43",
+      "initials": "DC",
+      "name": "Daniel Craig",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Daniel_Craig_James_Bond.jpg/300px-Daniel_Craig_James_Bond.jpg",
+      "emoji": "🍸🤵‍♂️",
+      "action": "ordering a martini, shaken not stirred, as James Bond",
+      "object": "casino chips",
+      "emojiStory": "🤵‍♂️🍸🤫🔫"
+    },
+    "44": {
+      "number": "44",
+      "initials": "DD",
+      "name": "Doris Day",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Doris_Day_Young_Man_with_a_Horn.jpg/300px-Doris_Day_Young_Man_with_a_Horn.jpg",
+      "emoji": "🎶👵",
+      "action": "singing 'Que Sera, Sera' with a sweet smile and a dog",
+      "object": "pillow talk",
+      "emojiStory": "🎶👵🐕😊"
+    },
+    "45": {
+      "number": "45",
+      "initials": "DE",
+      "name": "David Lee Roth",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Van_Halen_1984.jpg/300px-Van_Halen_1984.jpg",
+      "emoji": "🤸🎤",
+      "action": "doing a split jump while twirling a microphone stand",
+      "object": "microphone stand",
+      "emojiStory": "🎤🤸🎸🤘"
+    },
+    "46": {
+      "number": "46",
+      "initials": "DS",
+      "name": "David Spade",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/David_Spade_Tommy_Boy.jpg/300px-David_Spade_Tommy_Boy.jpg",
+      "emoji": "🙄😒",
+      "action": "being sarcastic and rolling his eyes at your dumb joke",
+      "object": "eye roll",
+      "emojiStory": "🙄😒😂🎤"
+    },
+    "47": {
+      "number": "47",
+      "initials": "DG",
+      "name": "David Guetta",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/David_Guetta_F***_Me_I%27m_Famous_2011.jpg/300px-David_Guetta_F***_Me_I%27m_Famous_2011.jpg",
+      "emoji": "🎧🎉",
+      "action": "DJing at a rave with lasers and smoke machines",
+      "object": "turntable",
+      "emojiStory": "🎧🎶🎉🕺"
+    },
+    "48": {
+      "number": "48",
+      "initials": "DH",
+      "name": "Drake Hogestyn",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Drake_Hogestyn_as_John_Black.jpg/300px-Drake_Hogestyn_as_John_Black.jpg",
+      "emoji": "🩺💔",
+      "action": "as John Black in Days of Our Lives, delivering dramatic medical news",
+      "object": "stethoscope",
+      "emojiStory": "🩺💔📺🏥"
+    },
+    "49": {
+      "number": "49",
+      "initials": "DN",
+      "name": "Dennis Nedry",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Wayne_Knight_as_Dennis_Nedry_Jurassic_Park.png/300px-Wayne_Knight_as_Dennis_Nedry_Jurassic_Park.png",
+      "emoji": "🦖💀",
+      "action": "getting eaten by a Dilophosaurus after messing with Jurassic Park",
+      "object": "can of shaving cream",
+      "emojiStory": "🦖☔️💀🤓"
+    },
+    "50": {
+      "number": "50",
+      "initials": "EO",
+      "name": "Emilio Estevez",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Emilio_Estevez_Young_Guns.jpg/300px-Emilio_Estevez_Young_Guns.jpg",
+      "emoji": "🏒🏆",
+      "action": "coaching the Mighty Ducks to victory against all odds",
+      "object": "hockey stick",
+      "emojiStory": "🏒🦆🏆🥇"
+    },
+    "51": {
+      "number": "51",
+      "initials": "EA",
+      "name": "Eminem",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Eminem_at_the_2010_MTV_Video_Music_Awards.jpg/300px-Eminem_at_the_2010_MTV_Video_Music_Awards.jpg",
+      "emoji": "🎤🤬",
+      "action": "rapping fast and furiously, dropping f-bombs",
+      "object": "mic drop",
+      "emojiStory": "🎤🔥🤬🎤"
+    },
+    "52": {
+      "number": "52",
+      "initials": "EB",
+      "name": "Elizabeth Banks",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Elizabeth_Banks_Charlie%27s_Angels_2019_premiere.jpg/300px-Elizabeth_Banks_Charlie%27s_Angels_2019_premiere.jpg",
+      "emoji": "🎬🎤",
+      "action": "directing Pitch Perfect and making it aca-awesome",
+      "object": "megaphone",
+      "emojiStory": "🎬🎤😂🎶"
+    },
+    "53": {
+      "number": "53",
+      "initials": "EC",
+      "name": "Eric Clapton",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Eric_Clapton_Cream.jpg/300px-Eric_Clapton_Cream.jpg",
+      "emoji": "🎸😢",
+      "action": "playing 'Layla' and making everyone weep with guitar solos",
+      "object": "guitar",
+      "emojiStory": "🎸😢🎶💔"
+    },
+    "54": {
+      "number": "54",
+      "initials": "ED",
+      "name": "Ed Norton",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ed_Norton_Fight_Club.jpg/300px-Ed_Norton_Fight_Club.jpg",
+      "emoji": "🧼🥊",
+      "action": "in Fight Club, making soap and punching himself in the face",
+      "object": "bar of soap",
+      "emojiStory": "🧼🥊🤯❓"
+    },
+    "55": {
+      "number": "55",
+      "initials": "EE",
+      "name": "Elon Musk",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Elon-Musk-king-Charles-III-May-2023_%28cropped%29.jpg/300px-Elon-Musk-king-Charles-III-May-2023_%28cropped%29.jpg",
+      "emoji": "🚀🐕",
+      "action": "tweeting about Dogecoin and sending rockets to space... maybe",
+      "object": "dogecoin",
+      "emojiStory": "🚀🐕💰❓🤷‍♂️"
+    },
+    "56": {
+      "number": "56",
+      "initials": "ES",
+      "name": "Elvis Presley",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Elvis_Presley_Jailhouse_Rock_trailer_screenshot.jpg/300px-Elvis_Presley_Jailhouse_Rock_trailer_screenshot.jpg",
+      "emoji": "🕺🎸",
+      "action": "shaking his hips and singing 'Hound Dog'",
+      "object": "pompadour",
+      "emojiStory": "🕺🎸🎤👑"
+    },
+    "57": {
+      "number": "57",
+      "initials": "EG",
+      "name": "Elton John",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Elton_John_Goodbye_Yellow_Brick_Road.jpg/300px-Elton_John_Goodbye_Yellow_Brick_Road.jpg",
+      "emoji": "🎹🌈",
+      "action": "playing the piano with crazy glasses and flamboyant outfits",
+      "object": "star-shaped glasses",
+      "emojiStory": "🎹🎤🌈✨"
+    },
+    "58": {
+      "number": "58",
+      "initials": "EH",
+      "name": "Ellen DeGeneres",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ellen_DeGeneres_Oscar_selfie.jpg/300px-Ellen_DeGeneres_Oscar_selfie.jpg",
+      "emoji": "💃🎤",
+      "action": "dancing at the start of her show and then getting cancelled",
+      "object": "talk show set",
+      "emojiStory": "💃🎤😂😬"
+    },
+    "59": {
+      "number": "59",
+      "initials": "EN",
+      "name": "Ed Nygma",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/RiddlerEdwardNygma.jpg/300px-RiddlerEdwardNygma.jpg",
+      "emoji": "❓🤨",
+      "action": "asking riddles with an annoying smirk as The Riddler",
+      "object": "question mark cane",
+      "emojiStory": "❓🦇🤨🤓"
+    },
+    "60": {
+      "number": "60",
+      "initials": "SO",
+      "name": "Snoop Dogg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Snoop_Dogg_performing_at_Rock_IM_Park_2019.jpg/300px-Snoop_Dogg_performing_at_Rock_IM_Park_2019.jpg",
+      "emoji": "🌿🎤",
+      "action": "smoking weed and rapping in a chill, laid-back way",
+      "object": "joint",
+      "emojiStory": "🎤🌿😎🐾"
+    },
+    "61": {
+      "number": "61",
+      "initials": "SA",
+      "name": "Samuel L. Jackson",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Snakes_on_a_Plane_Samuel_L_Jackson.jpg/300px-Snakes_on_a_Plane_Samuel_L_Jackson.jpg",
+      "emoji": "🤬🐍",
+      "action": "saying 'Motherfucker' while wielding a purple lightsaber and fighting snakes on a plane",
+      "object": "purple lightsaber",
+      "emojiStory": "🤬🎬🐍✈️"
+    },
+    "62": {
+      "number": "62",
+      "initials": "SB",
+      "name": "Steven Spielberg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Steven_Spielberg_E.T._1982.jpg/300px-Steven_Spielberg_E.T._1982.jpg",
+      "emoji": "👽🎬",
+      "action": "directing aliens and dinosaurs with childlike wonder",
+      "object": "film reel",
+      "emojiStory": "🎬👽🦕🚲"
+    },
+    "63": {
+      "number": "63",
+      "initials": "SC",
+      "name": "Sylvester Stallone",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Rocky_balboa_statue_philadelphia_museum_art.jpg/300px-Rocky_balboa_statue_philadelphia_museum_art.jpg",
+      "emoji": "💪🇺🇸",
+      "action": "yelling 'Yo Adrian!' and flexing his muscles like Rocky Balboa",
+      "object": "boxing glove",
+      "emojiStory": "💪🥊🇺🇸🥩"
+    },
+    "64": {
+      "number": "64",
+      "initials": "SD",
+      "name": "Sarah Silverman",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Sarah_Silverman_Comedy_Central_Roast_of_James_Franco.jpg/300px-Sarah_Silverman_Comedy_Central_Roast_of_James_Franco.jpg",
+      "emoji": "😂🤬",
+      "action": "telling edgy jokes and dropping f-bombs with a sweet smile",
+      "object": "swear jar",
+      "emojiStory": "🎤😂🤬😇"
+    },
+    "65": {
+      "number": "65",
+      "initials": "SE",
+      "name": "Seth Rogen",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Seth_Rogen_Pineapple_Express.jpg/300px-Seth_Rogen_Pineapple_Express.jpg",
+      "emoji": "😂🌿",
+      "action": "doing his signature laugh after smoking a lot of weed",
+      "object": "weed",
+      "emojiStory": "😂🌿🤪🎤"
+    },
+    "66": {
+      "number": "66",
+      "initials": "SS",
+      "name": "Sigourney Weaver",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Sigourney_Weaver_Alien_1979_trailer.jpg/300px-Sigourney_Weaver_Alien_1979_trailer.jpg",
+      "emoji": "👽🔥👩‍🚀",
+      "action": "fighting Xenomorphs with a flamethrower like a badass",
+      "object": "flamethrower",
+      "emojiStory": "👽🔥👩‍🚀💪"
+    },
+    "67": {
+      "number": "67",
+      "initials": "SG",
+      "name": "Spike Lee",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Spike_Lee_Do_the_Right_Thing.jpg/300px-Spike_Lee_Do_the_Right_Thing.jpg",
+      "emoji": "🎬🏀🗽",
+      "action": "courtside at a Knicks game, directing movies about NYC",
+      "object": "Knicks jersey",
+      "emojiStory": "🎬🏀🗽💜"
+    },
+    "68": {
+      "number": "68",
+      "initials": "SH",
+      "name": "Sean Hannity",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Sean_Hannity_2019_headshot.jpg/300px-Sean_Hannity_2019_headshot.jpg",
+      "emoji": "😠🇺🇸",
+      "action": "talking about 'the libs' with a permanent frown on Fox News",
+      "object": "Fox News logo",
+      "emojiStory": "😠👴🎤🇺🇸😡"
+    },
+    "69": {
+      "number": "69",
+      "initials": "SN",
+      "name": "Sinbad",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Sinbad_at_the_2013_Florida_Supercon_%28cropped%29.jpg/300px-Sinbad_at_the_2013_Florida_Supercon_%28cropped%29.jpg",
+      "emoji": "😂🎤",
+      "action": "telling observational jokes in a Cosby sweater",
+      "object": "comedy microphone",
+      "emojiStory": "🎤😂👴🧶"
+    },
+    "70": {
+      "number": "70",
+      "initials": "GO",
+      "name": "George Orwell",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Nineteen_Eighty-Four_first_edition_cover.jpg/300px-Nineteen_Eighty-Four_first_edition_cover.jpg",
+      "emoji": "✍️👁️‍🗨️",
+      "action": "writing '1984' and warning about Big Brother",
+      "object": "Big Brother poster",
+      "emojiStory": "✍️👁️‍🗨️🐷📺"
+    },
+    "71": {
+      "number": "71",
+      "initials": "GA",
+      "name": "George Armstrong Custer",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Custer_Last_Stand.jpg/300px-Custer_Last_Stand.jpg",
+      "emoji": "⚔️💀",
+      "action": "losing spectacularly at Little Bighorn and getting what he deserved",
+      "object": "cavalry hat",
+      "emojiStory": "⚔️🏹💀🐴"
+    },
+    "72": {
+      "number": "72",
+      "initials": "GB",
+      "name": "George Brett",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/George_Brett_1980.jpg/300px-George_Brett_1980.jpg",
+      "emoji": "⚾️🤮",
+      "action": "having a 'poop' incident on the field and still being a legend",
+      "object": "pine tar",
+      "emojiStory": "⚾️🤮💩👑"
+    },
+    "73": {
+      "number": "73",
+      "initials": "GC",
+      "name": "George Carlin",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/George_Carlin_headshot.jpg/300px-George_Carlin_headshot.jpg",
+      "emoji": "😂🤬",
+      "action": "doing stand-up comedy and listing the seven dirty words you can't say on TV",
+      "object": "seven dirty words",
+      "emojiStory": "🎤😂🤬👴"
+    },
+    "74": {
+      "number": "74",
+      "initials": "GD",
+      "name": "Gerard Depardieu",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Gerard_Depardieu_Cannes_2016.jpg/300px-Gerard_Depardieu_Cannes_2016.jpg",
+      "emoji": "🍷😡",
+      "action": "throwing wine at a wall in a fit of French rage",
+      "object": "wine bottle",
+      "emojiStory": "🍷🇫🇷😡🧀"
+    },
+    "75": {
+      "number": "75",
+      "initials": "GE",
+      "name": "Greta Garbo",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Greta_Garbo_Queen_Christina_1933.jpg/300px-Greta_Garbo_Queen_Christina_1933.jpg",
+      "emoji": "🎬🤫",
+      "action": "saying 'I want to be alone' and becoming a recluse",
+      "object": "fedora hat",
+      "emojiStory": "🎬🤫👤🎩"
+    },
+    "76": {
+      "number": "76",
+      "initials": "GS",
+      "name": "Gwen Stefani",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Gwen_Stefani_Harajuku_Lovers.jpg/300px-Gwen_Stefani_Harajuku_Lovers.jpg",
+      "emoji": "🎤📣",
+      "action": "singing 'Hollaback Girl' and spelling out B-A-N-A-N-A-S",
+      "object": "cheerleader outfit",
+      "emojiStory": "🎤📣🍌🎶"
+    },
+    "77": {
+      "number": "77",
+      "initials": "GG",
+      "name": "Gilbert Gottfried",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Gilbert_Gottfried_Aladdin.jpg/300px-Gilbert_Gottfried_Aladdin.jpg",
+      "emoji": "🦜😂",
+      "action": "doing his squawk laugh and telling offensive jokes",
+      "object": "parrot",
+      "emojiStory": "🦜😂🎤🤬"
+    },
+    "78": {
+      "number": "78",
+      "initials": "GH",
+      "name": "Whoopi Goldberg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Whoopi_Goldberg_Sister_Act.jpg/300px-Whoopi_Goldberg_Sister_Act.jpg",
+      "emoji": "⛪🎤😂",
+      "action": "as a singing nun in 'Sister Act', being hilarious and soulful",
+      "object": "nun habit",
+      "emojiStory": "⛪🎤😂🎶"
+    },
+    "79": {
+      "number": "79",
+      "initials": "GN",
+      "name": "Garth Nix",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Garth_Nix_Sabriel_cover.jpg/300px-Garth_Nix_Sabriel_cover.jpg",
+      "emoji": "📖⚔️",
+      "action": "writing fantasy novels with magic and talking animals",
+      "object": "Sabriel book",
+      "emojiStory": "📖✨⚔️🐦"
+    },
+    "80": {
+      "number": "80",
+      "initials": "HO",
+      "name": "Hulk Hogan",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Hulk_Hogan_WrestleMania_III.jpg/300px-Hulk_Hogan_WrestleMania_III.jpg",
+      "emoji": "🤼👂",
+      "action": "hulking up and cupping his ear to hear the cheers",
+      "object": "feather boa",
+      "emojiStory": "🤼💪👂🎤"
+    },
+    "81": {
+      "number": "81",
+      "initials": "HA",
+      "name": "Harrison Ford",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Harrison_Ford_Indiana_Jones_and_the_Raiders_of_the_Lost_Ark.jpg/300px-Harrison_Ford_Indiana_Jones_and_the_Raiders_of_the_Lost_Ark.jpg",
+      "emoji": "🤠🐍",
+      "action": "whipping snakes and looking cool as Indiana Jones",
+      "object": "Indiana Jones hat",
+      "emojiStory": "🤠🐍💥🎬"
+    },
+    "82": {
+      "number": "82",
+      "initials": "HB",
+      "name": "Humphrey Bogart",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Casablanca_film_poster.jpg/300px-Casablanca_film_poster.jpg",
+      "emoji": "🚬🥃",
+      "action": "saying 'Here's looking at you, kid' with a cigarette and a glass of whiskey",
+      "object": "fedora and trench coat",
+      "emojiStory": "🚬🥃😢🎬"
+    },
+    "83": {
+      "number": "83",
+      "initials": "HC",
+      "name": "Hillary Clinton",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Hillary_Clinton_official_portrait_2013.jpg/300px-Hillary_Clinton_official_portrait_2013.jpg",
+      "emoji": "🇺🇸💃",
+      "action": "doing the 'shimmy' dance and trying to be relatable",
+      "object": "pantsuit",
+      "emojiStory": "🇺🇸💃🤨🎤"
+    },
+    "84": {
+      "number": "84",
+      "initials": "HD",
+      "name": "Hugh Downs",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Hugh_Downs_Concentration.jpg/300px-Hugh_Downs_Concentration.jpg",
+      "emoji": "📺🎤",
+      "action": "hosting '20/20' with gravitas and a reassuring voice",
+      "object": "news desk",
+      "emojiStory": "📺👴🎤📰"
+    },
+    "85": {
+      "number": "85",
+      "initials": "HE",
+      "name": "Hugh Hefner",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Hugh_Hefner_Playboy_logo.jpg/300px-Hugh_Hefner_Playboy_logo.jpg",
+      "emoji": "🐰🚬",
+      "action": "wearing a robe and surrounded by bunnies, puffing a pipe",
+      "object": "pipe",
+      "emojiStory": "🤵‍♂️🐰🚬🥂"
+    },
+    "86": {
+      "number": "86",
+      "initials": "HS",
+      "name": "Harry Styles",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Harry_Styles_Love_on_Tour_cropped.jpg/300px-Harry_Styles_Love_on_Tour_cropped.jpg",
+      "emoji": "🎤💅",
+      "action": "singing and being incredibly fashionable with a feather boa",
+      "object": "feather boa",
+      "emojiStory": "🎤🕺💅✨"
+    },
+    "87": {
+      "number": "87",
+      "initials": "HG",
+      "name": "Hugh Grant",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/HughGrantbyDavidShankbone.jpg/300px-HughGrantbyDavidShankbone.jpg",
+      "emoji": "🇬🇧😅",
+      "action": "stammering charmingly and getting the girl in a rom-com",
+      "object": "rom-com script",
+      "emojiStory": "🇬🇧😅❤️🎬"
+    },
+    "88": {
+      "number": "88",
+      "initials": "HH",
+      "name": "Halle Berry",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Halle_Berry_Catwoman.jpg/300px-Halle_Berry_Catwoman.jpg",
+      "emoji": "😾🪶",
+      "action": "as Catwoman, being fierce and flexible but maybe not in a good movie",
+      "object": "catwoman mask",
+      "emojiStory": "😾🎬🪶😬"
+    },
+    "89": {
+      "number": "89",
+      "initials": "HN",
+      "name": "Hannibal Lecter",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Hannibal_the_cannibal.jpg/300px-Hannibal_the_cannibal.jpg",
+      "emoji": "🔪👨‍⚕️",
+      "action": "eating someone's liver with fava beans and a nice chianti",
+      "object": "fava beans",
+      "emojiStory": "🔪👨‍⚕️😱🍷"
+    },
+    "90": {
+      "number": "90",
+      "initials": "NO",
+      "name": "Neil deGrasse Tyson",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Neil_deGrasse_Tyson_by_Christopher_Michel.jpg/300px-Neil_deGrasse_Tyson_by_Christopher_Michel.jpg",
+      "emoji": "🔭🤯",
+      "action": "explaining the universe and blowing your mind with science",
+      "object": "planetarium",
+      "emojiStory": "🔭🌌🤯🧠"
+    },
+    "91": {
+      "number": "91",
+      "initials": "NA",
+      "name": "Nicolas Cage",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Nicolas_Cage_Face_Off.jpg/300px-Nicolas_Cage_Face_Off.jpg",
+      "emoji": "🔥🤪",
+      "action": "going batshit crazy in every movie, stealing the Declaration of Independence",
+      "object": "national treasure",
+      "emojiStory": "🔥🤪🎬🦅"
+    },
+    "92": {
+      "number": "92",
+      "initials": "NB",
+      "name": "Notorious B.I.G.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/The_Notorious_B.I.G._Ready_to_Die.jpg/300px-The_Notorious_B.I.G._Ready_to_Die.jpg",
+      "emoji": "👑🎤",
+      "action": "rapping about 'Juicy' and being the King of New York",
+      "object": "crown",
+      "emojiStory": "🎤👑💰👑"
+    },
+    "93": {
+      "number": "93",
+      "initials": "NC",
+      "name": "Nick Cannon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Nick_Cannon_Wild_N_Out_set.jpg/300px-Nick_Cannon_Wild_N_Out_set.jpg",
+      "emoji": "🎤👶",
+      "action": "hosting 'Wild 'N Out' and having a million kids",
+      "object": "MTV VJ jacket",
+      "emojiStory": "🎤😂👶👶👶"
+    },
+    "94": {
+      "number": "94",
+      "initials": "ND",
+      "name": "Neil Diamond",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Neil_Diamond_The_Jazz_Singer.jpg/300px-Neil_Diamond_The_Jazz_Singer.jpg",
+      "emoji": "💎🎤",
+      "action": "singing 'Sweet Caroline' in a sparkly sequined shirt",
+      "object": "sequined shirt",
+      "emojiStory": "🎤💎🎶👵"
+    },
+    "95": {
+      "number": "95",
+      "initials": "NE",
+      "name": "Norma Jean",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Marilyn_Monroe_The_Seven_Year_Itch.jpg/300px-Marilyn_Monroe_The_Seven_Year_Itch.jpg",
+      "emoji": "👧➡️💋",
+      "action": "transforming from Norma Jean into Marilyn Monroe",
+      "object": "blonde wig",
+      "emojiStory": "👧➡️💋🎬✨"
+    },
+    "96": {
+      "number": "96",
+      "initials": "NS",
+      "name": "Nancy Sinatra",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Nancy_Sinatra_Boots.jpg/300px-Nancy_Sinatra_Boots.jpg",
+      "emoji": "👢🎶",
+      "action": "singing 'These Boots Are Made for Walkin' and looking tough",
+      "object": "go-go boots",
+      "emojiStory": "🎤👢🎶🔫"
+    },
+    "97": {
+      "number": "97",
+      "initials": "NG",
+      "name": "Noel Gallagher",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Oasis_Be_Here_Now_album_cover.jpg/300px-Oasis_Be_Here_Now_album_cover.jpg",
+      "emoji": "🎸🇬🇧",
+      "action": "writing and singing Oasis songs with a sneer and a Union Jack guitar",
+      "object": "union jack guitar",
+      "emojiStory": "🎸🇬🇧🎶😠"
+    },
+    "98": {
+      "number": "98",
+      "initials": "NH",
+      "name": "Neil Hamburger",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Neil_Hamburger_Comedy_Store_2014.jpg/300px-Neil_Hamburger_Comedy_Store_2014.jpg",
+      "emoji": "🎤😐",
+      "action": "telling anti-jokes with greasy hair and a forced cough",
+      "object": "greasy hair",
+      "emojiStory": "🎤😐🍔🤮"
+    },
+    "99": {
+      "number": "99",
+      "initials": "NN",
+      "name": "Nelson Mandela",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Nelson_Mandela_AAM_London_protest_1962.jpg/300px-Nelson_Mandela_AAM_London_protest_1962.jpg",
+      "emoji": "🇿🇦🕊️",
+      "action": "fighting apartheid and becoming a symbol of peace and reconciliation",
+      "object": "Madiba shirt",
+      "emojiStory": "🇿🇦✊🕊️🇿🇦"
+    }
+  }

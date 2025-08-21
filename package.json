@@ -1,0 +1,14 @@
+{
+  "name": "memorAIzation-stAItion",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "gen:images": "node scripts/gen-image-manifest.mjs"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
