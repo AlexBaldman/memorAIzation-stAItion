@@ -16,6 +16,18 @@
   <div class="max-w-6xl mx-auto text-center mb-8">
     <h1 class="text-4xl md:text-6xl font-bold text-red-400 drop-shadow-lg">memor<span class="text-blue-400">AI</span>zation st<span class="text-blue-400">AI</span>tion</h1>
     <h2 class="text-xl md:text-2xl text-blue-300 mt-2">Celebrity Initials Deck (AI-powered)</h2>
+    <div class="mt-4 flex flex-col md:flex-row items-center justify-center gap-2 text-sm">
+      <label class="flex items-center gap-2">Provider
+        <select id="ai-provider" class="text-zinc-800 rounded px-2 py-1">
+          <option value="hf">Hugging Face</option>
+          <option value="qwen">Qwen (demo)</option>
+        </select>
+      </label>
+      <label class="flex items-center gap-2">Model (HF)
+        <input id="ai-model" placeholder="stabilityai/stable-diffusion-2" class="text-zinc-800 rounded px-2 py-1 w-72" />
+      </label>
+      <button id="save-ai-config" class="px-3 py-1 rounded bg-zinc-600 hover:bg-zinc-500">Save</button>
+    </div>
   </div>
 
   <div id="card-container" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
@@ -65,6 +77,32 @@
   <script type="module" src="main.js"></script>
   <script type="module" src="dice.js"></script>
   <script type="module" src="pegboard.js"></script>
+  
+  <!-- Theme Builder section -->
+  <section id="theme-builder" class="mt-12 max-w-6xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4 text-center">Theme Builder (alpha)</h3>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <aside class="md:col-span-2 bg-zinc-800/50 rounded p-3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-semibold">Components</span>
+          <select id="theme-select" class="text-zinc-800 rounded px-2 py-1">
+            <option value="data/themes/default.json">Default</option>
+          </select>
+        </div>
+        <ul id="component-list" class="space-y-2 text-sm"></ul>
+      </aside>
+      <div class="md:col-span-3">
+        <div id="builder-canvas" class="relative bg-zinc-900/40 rounded h-96 overflow-hidden">
+          <!-- draggable components will render here -->
+        </div>
+        <div class="mt-2 flex gap-2">
+          <button id="save-theme-layout" class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500">Save Layout</button>
+          <button id="clear-theme-layout" class="px-3 py-1 rounded bg-zinc-600 hover:bg-zinc-500">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="theme-builder.js"></script>
 <!-- Session History Modal -->
 <div id="session-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
   <div class="bg-white rounded p-4 max-w-md w-full text-zinc-800">

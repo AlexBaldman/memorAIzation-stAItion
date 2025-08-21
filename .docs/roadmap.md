@@ -16,15 +16,19 @@
 
 ## 3. Dice Practice Module
 - [x] Dice2D component (2×d6, 2×d10)
+- [x] Roll history modal (session list)
+- [x] Basic shake animation on roll
 - [ ] Animation themes (2D sprite, 3D CSS, custom faces)
 - [ ] Practice session tracking (times, accuracy)
 - [ ] Spaced-Repetition scheduling
 
 ## 4. Card Theme / Component System
 - [ ] Theme library (MTG card, Illuminati, minimalist, etc.)
+- [ ] Theme drawer UI scaffold
 - [ ] Modular card components (title bar, art frame, footer text) drag-and-drop builder
 - [ ] Remix editor with resize, align, style controls
 - [ ] AI-assisted template creation from sketch / prompt
+- [ ] Theme schema (JSON) for reusable components and layout
 
 ## 5. Security & DevOps
 - [x] `.gitignore` for secrets & Node artifacts
@@ -34,6 +38,13 @@
 - [ ] LocalStorage / IndexedDB persistence layer
 - [ ] Stats dashboard
 - [ ] Accessibility & keyboard support
+
+## 7. Image Editing (AI)
+- [ ] Edit selected image (img2img) for current card
+- [ ] Prompt UI and presets (e.g., pixel-art, contrast, colorways)
+- [ ] Save edited outputs (cache and optional export folder)
+- [ ] Optional metadata sidecars (`meta.json`) with prompt/credits/licensing
+- [ ] Reference: see `.docs/image_workflow.md` for filename guidance and manifest flow
 
 ---
 
