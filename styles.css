@@ -1,3 +1,5 @@
+/* Enhanced styles for memorAIzation stAItion */
+
 /* Extra styles and flip animation */
 @keyframes shake {
   0%,100% { transform: translate(0) rotate(0deg); }
@@ -5,15 +7,444 @@
   50% { transform: translate(-2px) rotate(-5deg); }
   75% { transform: translate(2px) rotate(5deg); }
 }
+
 .die.shake { animation: shake 0.6s ease-in-out; }
 
+/* Card system enhancements */
 .card-inner {
   transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .card.flip .card-inner,
 .card-inner.flip {
   transform: rotateY(180deg);
 }
+
 .card-face {
   backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Memory Card Component Styles */
+.memory-card {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.memory-card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.memory-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card .card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.memory-card .card-front {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 2px solid #e2e8f0;
+}
+
+.memory-card .card-back {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  transform: rotateY(180deg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.memory-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  font-weight: bold;
+}
+
+.memory-card .card-number {
+  font-size: 1.25rem;
+  color: #475569;
+}
+
+.memory-card .card-initials {
+  font-size: 1.25rem;
+  color: #dc2626;
+  font-weight: 800;
+}
+
+.memory-card .card-image-container {
+  position: relative;
+  height: 160px;
+  margin: 0 0.75rem;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.memory-card .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.memory-card .card-image:hover {
+  transform: scale(1.05);
+}
+
+.memory-card .card-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.memory-card .card-image-container:hover .card-image-overlay {
+  opacity: 1;
+}
+
+.memory-card .card-name {
+  text-align: center;
+  padding: 0.75rem;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.875rem;
+}
+
+.memory-card .card-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.memory-card .card-number-display {
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.memory-card .card-person {
+  font-weight: 600;
+  text-align: center;
+}
+
+.memory-card .card-action,
+.memory-card .card-object {
+  font-style: italic;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.memory-card .card-emoji-story {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.memory-card .card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.memory-card .btn {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.memory-card .btn-primary {
+  background: #dc2626;
+  color: white;
+}
+
+.memory-card .btn-primary:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.memory-card .btn-secondary {
+  background: #f59e0b;
+  color: white;
+}
+
+.memory-card .btn-secondary:hover:not(:disabled) {
+  background: #d97706;
+}
+
+.memory-card .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.memory-card .btn-text,
+.memory-card .btn-loading {
+  transition: opacity 0.2s ease;
+}
+
+.memory-card .btn-loading.hidden,
+.memory-card .btn-text.hidden {
+  opacity: 0;
+  position: absolute;
+}
+
+/* Loading states */
+.memory-card.loading .card-image-overlay {
+  opacity: 1;
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-spinner.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Feedback messages */
+.card-feedback {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  z-index: 10;
+  animation: slideDown 0.3s ease;
+}
+
+.card-feedback-success {
+  background: #10b981;
+  color: white;
+}
+
+.card-feedback-error {
+  background: #ef4444;
+  color: white;
+}
+
+.card-feedback-info {
+  background: #3b82f6;
+  color: white;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Error states */
+.memory-card.error {
+  border: 2px solid #ef4444;
+}
+
+.card-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Accessibility enhancements */
+.memory-card.high-contrast {
+  border: 3px solid #000;
+}
+
+.memory-card.high-contrast .card-front {
+  background: #000;
+  color: #fff;
+}
+
+.memory-card.high-contrast .card-back {
+  background: #fff;
+  color: #000;
+}
+
+.memory-card.reduced-motion .card-inner {
+  transition: none;
+}
+
+.memory-card.reduced-motion:hover {
+  transform: none;
+}
+
+.memory-card.no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Error banner */
+.error-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fef2f2;
+  border-bottom: 2px solid #ef4444;
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  margin-right: 0.5rem;
+}
+
+.error-message {
+  flex: 1;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.error-close {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.error-close:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .memory-card {
+    height: 280px;
+  }
+  
+  .memory-card .card-image-container {
+    height: 120px;
+  }
+  
+  .memory-card .card-actions {
+    flex-direction: column;
+  }
+  
+  .card-feedback {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .memory-card {
+    border: 3px solid #000;
+  }
+  
+  .memory-card .card-front {
+    background: #000;
+    color: #fff;
+  }
+  
+  .memory-card .card-back {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* Reduced motion mode */
+@media (prefers-reduced-motion: reduce) {
+  .memory-card .card-inner,
+  .memory-card:hover,
+  .memory-card .card-image,
+  .card-feedback {
+    transition: none;
+    animation: none;
+  }
+  
+  .memory-card:hover {
+    transform: none;
+  }
 }

@@ -88,8 +88,8 @@ class MemoryEngine {
         lookup.byNumber.set(number, entry);
         lookup.byInitials.set(entry.initials, entry);
         lookup.byName.set(entry.name.toLowerCase(), entry);
-        lookup.byAction.set(entry.action.toLowerCase(), entry);
-        lookup.byObject.set(entry.object.toLowerCase(), entry);
+        if (entry.action) lookup.byAction.set(entry.action.toLowerCase(), entry);
+        if (entry.object) lookup.byObject.set(entry.object.toLowerCase(), entry);
       });
       
       // Store in state
