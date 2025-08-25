@@ -250,7 +250,7 @@ class AIService {
   }
   
   // Qwen demo generation
-  async generateQwen(prompt) {
+  async generateQwen(prompt, options = {}) {
     const token = memoryState.get('ai.token')
       || (typeof localStorage !== 'undefined' ? localStorage.getItem('ai-token') : null)
       || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_HF_TOKEN : null);
@@ -259,13 +259,18 @@ class AIService {
       throw new Error('Hugging Face token not configured for Qwen');
     }
     
-    const response = await fetch('https://api-inference.huggingface.co/models/qwen/Qwen-72B-Image', {
+    const body = {
+      inputs: prompt,
+      ...(options.parameters ? { parameters: options.parameters } : {})
+    };
+    
+    const response = await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen-Image', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ inputs: prompt })
+      body: JSON.stringify(body)
     });
     
     if (!response.ok) {
