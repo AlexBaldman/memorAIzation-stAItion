@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Legacy compatibility - keep some global functions
   window.refreshApp = () => app.refresh();
   window.getAppStats = () => app.getStats();
+
 });
 
 // Export for module usage
