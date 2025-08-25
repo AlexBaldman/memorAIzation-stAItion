@@ -28,7 +28,11 @@
       <label class="flex items-center gap-2">Model (HF)
         <input id="ai-model" placeholder="stabilityai/stable-diffusion-2" class="text-zinc-800 rounded px-2 py-1 w-72" />
       </label>
+      <label class="flex items-center gap-2">Token (HF)
+        <input id="ai-token" placeholder="hf_xxx..." class="text-zinc-800 rounded px-2 py-1 w-64" />
+      </label>
       <button id="save-ai-config" class="px-3 py-1 rounded bg-zinc-600 hover:bg-zinc-500">Save</button>
+      <button id="generate-missing" class="px-3 py-1 rounded bg-green-600 hover:bg-green-500">Generate Missing Images</button>
     </div>
     
     <!-- Accessibility Controls -->
@@ -190,6 +194,53 @@
         performanceDashboard.classList.toggle('hidden');
         performanceToggle.textContent = performanceDashboard.classList.contains('hidden') ? 'Show Performance' : 'Hide Performance';
       });
+      
+      // Prefill AI config inputs
+      const providerSelect = document.getElementById('ai-provider');
+      const modelInput = document.getElementById('ai-model');
+      const tokenInput = document.getElementById('ai-token');
+      try {
+        const savedProvider = localStorage.getItem('ai-provider');
+        const savedModel = localStorage.getItem('ai-model');
+        const savedToken = localStorage.getItem('ai-token');
+        if (savedProvider && providerSelect) providerSelect.value = savedProvider;
+        if (savedModel && modelInput) modelInput.value = savedModel.replaceAll('"','');
+        if (savedToken && tokenInput) tokenInput.value = savedToken.replaceAll('"','');
+      } catch {}
+      
+      // Save AI config
+      const saveBtn = document.getElementById('save-ai-config');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          const provider = providerSelect ? providerSelect.value : 'hf';
+          const model = modelInput ? modelInput.value.trim() : '';
+          const token = tokenInput ? tokenInput.value.trim() : '';
+          if (provider) localStorage.setItem('ai-provider', provider);
+          if (model) localStorage.setItem('ai-model', model);
+          if (token) localStorage.setItem('ai-token', token);
+          if (window?.memorAIzationApp) {
+            window.memorAIzationApp.updateAIConfig({ provider, model, token });
+          }
+          saveBtn.textContent = 'Saved!';
+          setTimeout(() => { saveBtn.textContent = 'Save'; }, 1000);
+        });
+      }
+      
+      // Batch generate missing images
+      const batchBtn = document.getElementById('generate-missing');
+      if (batchBtn) {
+        batchBtn.addEventListener('click', async () => {
+          batchBtn.disabled = true;
+          const prev = batchBtn.textContent;
+          batchBtn.textContent = 'Generating...';
+          try {
+            await window?.memorAIzationApp?.generateMissingImages?.();
+          } finally {
+            batchBtn.textContent = prev;
+            batchBtn.disabled = false;
+          }
+        });
+      }
       
       // Clear dice history
       const clearHistoryBtn = document.getElementById('clear-history');

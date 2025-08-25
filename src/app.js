@@ -117,6 +117,7 @@ class MemorAIzationApp {
       // Handle provider change
       providerSelect.addEventListener('change', (e) => {
         memoryState.set('ai.provider', e.target.value);
+        try { localStorage.setItem('ai-provider', e.target.value); } catch {}
       });
       
       // Handle save
@@ -128,6 +129,10 @@ class MemorAIzationApp {
           ['ai.provider', provider],
           ['ai.model', model]
         ]);
+        try {
+          localStorage.setItem('ai-provider', provider);
+          localStorage.setItem('ai-model', model);
+        } catch {}
         
         // Show feedback
         saveBtn.textContent = 'Saved!';
@@ -409,6 +414,51 @@ class MemorAIzationApp {
       aiStats: aiService.getStats(),
       performance: this.performanceMetrics ? Object.fromEntries(this.performanceMetrics) : {}
     };
+  }
+
+  // Update AI configuration (from UI)
+  updateAIConfig({ provider, model, token } = {}) {
+    const updates = [];
+    if (provider) updates.push(['ai.provider', provider]);
+    if (model) updates.push(['ai.model', model]);
+    if (token) updates.push(['ai.token', token]);
+    if (updates.length > 0) {
+      memoryState.batch(updates);
+    }
+  }
+
+  // Generate images for cards without images/cached entries
+  async generateMissingImages() {
+    const paoData = memoryState.get('pao.data');
+    if (!paoData) return;
+    const manifest = memoryState.get('imageManifest') || {};
+    
+    const entries = Object.values(paoData);
+    for (const entry of entries) {
+      const hasManifest = manifest[entry.number] && manifest[entry.number].length > 0;
+      const card = this.cards.get(entry.number);
+      const hasCached = card?.getElement()?.querySelector('[data-card-image]')?.src;
+      if (hasManifest || hasCached) continue;
+      
+      const parts = [];
+      if (entry.name) parts.push(entry.name);
+      if (entry.emoji) parts.push(entry.emoji);
+      if (entry.action) parts.push(`doing ${entry.action}`);
+      if (entry.object) parts.push(`with ${entry.object}`);
+      const prompt = `High-resolution portrait photo of ${parts.join(' ')}`.trim();
+      try {
+        const res = await aiService.generateImage(prompt, { priority: 'normal' });
+        if (res.success && card) {
+          const imgEl = card.getElement().querySelector('[data-card-image]');
+          if (imgEl) {
+            const url = URL.createObjectURL(res.image);
+            imgEl.src = url;
+          }
+        }
+      } catch (e) {
+        console.warn(`Batch generation failed for ${entry.number}:`, e);
+      }
+    }
   }
   
   // Refresh the application

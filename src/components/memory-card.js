@@ -491,19 +491,19 @@ class MemoryCard {
     const editBtn = this.element.querySelector('[data-edit-btn]');
     
     if (generateBtn) {
-      const text = generateBtn.querySelector('[data-btn-text]');
-      const loading = generateBtn.querySelector('[data-btn-loading]');
-      
+      const text = generateBtn.querySelector('.btn-text');
+      const spinner = generateBtn.querySelector('.btn-loading');
+      generateBtn.disabled = loading;
       if (text) text.classList.toggle('hidden', loading);
-      if (loading) loading.classList.toggle('hidden', !loading);
+      if (spinner) spinner.classList.toggle('hidden', !loading);
     }
     
     if (editBtn) {
-      const text = editBtn.querySelector('[data-btn-text]');
-      const loading = editBtn.querySelector('[data-btn-loading]');
-      
+      const text = editBtn.querySelector('.btn-text');
+      const spinner = editBtn.querySelector('.btn-loading');
+      editBtn.disabled = loading;
       if (text) text.classList.toggle('hidden', loading);
-      if (loading) loading.classList.toggle('hidden', !loading);
+      if (spinner) spinner.classList.toggle('hidden', !loading);
     }
   }
   

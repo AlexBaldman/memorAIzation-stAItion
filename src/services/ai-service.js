@@ -30,7 +30,10 @@ class AIService {
     // Hugging Face provider
     this.providers.set('hf', {
       name: 'Hugging Face',
-      generate: (prompt, model) => this.generateHF(prompt, model),
+      generate: (prompt, options = {}) => this.generateHF(
+        prompt,
+        options.model || memoryState.get('ai.model') || 'stabilityai/stable-diffusion-2'
+      ),
       priority: 1,
       cost: 'low',
       rateLimit: 1000, // ms between requests
@@ -168,18 +171,17 @@ class AIService {
     const { prompt, options } = item;
     
     // Select best available provider
-    const provider = this.selectProvider(options);
+    let provider = this.selectProvider(options);
     
     if (!provider) {
       throw new Error('No available AI providers');
     }
     
-    // Check rate limiting
+    // Check rate limiting and try alternate if needed
     if (!this.checkRateLimit(provider)) {
-      // Try alternative provider
       const altProvider = this.selectProvider(options, provider.name);
-      if (altProvider) {
-        return await altProvider.generate(prompt, options);
+      if (altProvider && this.checkRateLimit(altProvider)) {
+        provider = altProvider;
       } else {
         throw new Error('All providers rate limited');
       }
@@ -196,9 +198,19 @@ class AIService {
   
   // Select best available provider
   selectProvider(options, excludeName = null) {
+    const now = Date.now();
+    const isAvailable = (p) => (now - p.lastRequest) >= p.rateLimit && p.name !== excludeName;
+    
+    // Prefer explicitly selected provider when available
+    const preferredKey = memoryState.get('ai.provider') || 'hf';
+    const preferred = this.providers.get(preferredKey);
+    if (preferred && isAvailable(preferred)) {
+      return preferred;
+    }
+    
+    // Fallback: choose next by priority
     const available = Array.from(this.providers.values())
-      .filter(p => p.name !== excludeName)
-      .filter(p => this.checkRateLimit(p))
+      .filter(isAvailable)
       .sort((a, b) => a.priority - b.priority);
     
     return available[0] || null;
@@ -219,7 +231,9 @@ class AIService {
   
   // Hugging Face generation
   async generateHF(prompt, model = 'stabilityai/stable-diffusion-2') {
-    const token = memoryState.get('ai.token') || import.meta.env.VITE_HF_TOKEN;
+    const token = memoryState.get('ai.token')
+      || (typeof localStorage !== 'undefined' ? localStorage.getItem('ai-token') : null)
+      || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_HF_TOKEN : null);
     
     if (!token) {
       throw new Error('Hugging Face token not configured');
@@ -311,7 +325,13 @@ class AIService {
   // Generate cache key
   generateCacheKey(prompt, options) {
     const key = `${prompt}_${JSON.stringify(options)}`;
-    return btoa(key).slice(0, 32); // Base64 encode and truncate
+    // Unicode-safe base64 encoding
+    const bytes = new TextEncoder().encode(key);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary).slice(0, 32);
   }
   
   // Generate queue ID
