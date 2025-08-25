@@ -177,14 +177,9 @@ class AIService {
       throw new Error('No available AI providers');
     }
     
-    // Check rate limiting and try alternate if needed
+    // Enforce rate limiting: do not switch providers implicitly
     if (!this.checkRateLimit(provider)) {
-      const altProvider = this.selectProvider(options, provider.name);
-      if (altProvider && this.checkRateLimit(altProvider)) {
-        provider = altProvider;
-      } else {
-        throw new Error('All providers rate limited');
-      }
+      throw new Error('Provider rate limited');
     }
     
     // Generate image
@@ -198,22 +193,20 @@ class AIService {
   
   // Select best available provider
   selectProvider(options, excludeName = null) {
-    const now = Date.now();
-    const isAvailable = (p) => (now - p.lastRequest) >= p.rateLimit && p.name !== excludeName;
-    
-    // Prefer explicitly selected provider when available
     const preferredKey = memoryState.get('ai.provider') || 'hf';
     const preferred = this.providers.get(preferredKey);
-    if (preferred && isAvailable(preferred)) {
+    if (preferred && preferred.name !== excludeName) {
       return preferred;
     }
     
-    // Fallback: choose next by priority
-    const available = Array.from(this.providers.values())
-      .filter(isAvailable)
-      .sort((a, b) => a.priority - b.priority);
+    if (options && options.allowFallback) {
+      const available = Array.from(this.providers.values())
+        .filter(p => p.name !== excludeName)
+        .sort((a, b) => a.priority - b.priority);
+      return available[0] || null;
+    }
     
-    return available[0] || null;
+    return null;
   }
   
   // Check provider rate limiting
@@ -258,9 +251,20 @@ class AIService {
   
   // Qwen demo generation
   async generateQwen(prompt) {
+    const token = memoryState.get('ai.token')
+      || (typeof localStorage !== 'undefined' ? localStorage.getItem('ai-token') : null)
+      || (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_HF_TOKEN : null);
+    
+    if (!token) {
+      throw new Error('Hugging Face token not configured for Qwen');
+    }
+    
     const response = await fetch('https://api-inference.huggingface.co/models/qwen/Qwen-72B-Image', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({ inputs: prompt })
     });
     
