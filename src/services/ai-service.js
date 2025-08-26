@@ -187,9 +187,14 @@ class AIService {
       throw new Error('No available AI providers');
     }
     
-    // Enforce rate limiting: do not switch providers implicitly
+    // Check rate limiting and try alternate if needed
     if (!this.checkRateLimit(provider)) {
-      throw new Error('Provider rate limited');
+      const altProvider = this.selectProvider(options, provider.name);
+      if (altProvider && this.checkRateLimit(altProvider)) {
+        provider = altProvider;
+      } else {
+        throw new Error('All providers rate limited');
+      }
     }
     
     // Generate image
@@ -208,6 +213,21 @@ class AIService {
     if (preferred && preferred.name !== excludeName) {
       return preferred;
     }
+
+    const now = Date.now();
+    const isAvailable = (p) => (now - p.lastRequest) >= p.rateLimit && p.name !== excludeName;
+    
+    // Prefer explicitly selected provider when available
+    const preferredKey = memoryState.get('ai.provider') || 'hf';
+    const preferred = this.providers.get(preferredKey);
+    if (preferred && isAvailable(preferred)) {
+      return preferred;
+    }
+    
+    // Fallback: choose next by priority
+    const available = Array.from(this.providers.values())
+      .filter(isAvailable)
+      .sort((a, b) => a.priority - b.priority
     
     if (options && options.allowFallback) {
       const available = Array.from(this.providers.values())

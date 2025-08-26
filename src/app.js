@@ -453,6 +453,7 @@ class MemorAIzationApp {
           options.parameters = { num_inference_steps: 8 };
         }
         const res = await aiService.generateImage(prompt, options);
+
         if (res.success && card) {
           const imgEl = card.getElement().querySelector('[data-card-image]');
           if (imgEl) {
