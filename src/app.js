@@ -447,7 +447,13 @@ class MemorAIzationApp {
       if (entry.object) parts.push(`with ${entry.object}`);
       const prompt = `High-resolution portrait photo of ${parts.join(' ')}`.trim();
       try {
-        const res = await aiService.generateImage(prompt, { priority: 'normal' });
+        const provider = memoryState.get('ai.provider');
+        const options = { priority: 'normal' };
+        if (provider === 'qwen') {
+          options.parameters = { num_inference_steps: 8 };
+        }
+        const res = await aiService.generateImage(prompt, options);
+
         if (res.success && card) {
           const imgEl = card.getElement().querySelector('[data-card-image]');
           if (imgEl) {
