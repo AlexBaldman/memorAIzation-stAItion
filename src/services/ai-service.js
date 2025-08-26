@@ -40,13 +40,23 @@ class AIService {
       lastRequest: 0
     });
     
-    // Qwen demo provider (fallback)
+    // Qwen demo provider (on HF)
     this.providers.set('qwen', {
       name: 'Qwen Demo',
-      generate: (prompt) => this.generateQwen(prompt),
+      generate: (prompt, options = {}) => this.generateQwen(prompt, options),
       priority: 2,
       cost: 'free',
       rateLimit: 2000,
+      lastRequest: 0
+    });
+    
+    // Pollinations (no token) fallback
+    this.providers.set('pollinations', {
+      name: 'Pollinations',
+      generate: (prompt) => this.generatePollinations(prompt),
+      priority: 9,
+      cost: 'free',
+      rateLimit: 500,
       lastRequest: 0
     });
     
@@ -54,7 +64,7 @@ class AIService {
     this.providers.set('local', {
       name: 'Local Model',
       generate: (prompt) => this.generateLocal(prompt),
-      priority: 3,
+      priority: 10,
       cost: 'none',
       rateLimit: 0,
       lastRequest: 0
@@ -279,6 +289,17 @@ class AIService {
     
     const blob = await response.blob();
     return { success: true, image: blob, provider: 'qwen' };
+  }
+  
+  // Pollinations image generation (no token)
+  async generatePollinations(prompt) {
+    const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Pollinations request failed: ${response.status}`);
+    }
+    const blob = await response.blob();
+    return { success: true, image: blob, provider: 'pollinations' };
   }
   
   // Local generation (placeholder)

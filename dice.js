@@ -31,10 +31,8 @@ export function initDicePractice() {
   const rollBtn = document.getElementById('roll-btn');
   const resultEl = document.getElementById('roll-result');
 
-  // two D6 standard + two D10 for PAO
+  // two D10 for PAO two-digit number
   const dice = [
-    new Die(6, container, 'd6-1'), 
-    new Die(6, container, 'd6-2'), 
     new Die(10, container, 'd10-1'), 
     new Die(10, container, 'd10-2')
   ];
@@ -83,7 +81,7 @@ export function initDicePractice() {
       return val;
     });
     
-    const twoDigit = rolls[2] * 10 + rolls[3];
+    const twoDigit = rolls[0] * 10 + rolls[1];
     resultEl.textContent = `PAO Number: ${String(twoDigit).padStart(2, '0')}`;
     
     const session = loadSession();
