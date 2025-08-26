@@ -208,12 +208,6 @@ class AIService {
   
   // Select best available provider
   selectProvider(options, excludeName = null) {
-    const preferredKey = memoryState.get('ai.provider') || 'hf';
-    const preferred = this.providers.get(preferredKey);
-    if (preferred && preferred.name !== excludeName) {
-      return preferred;
-    }
-
     const now = Date.now();
     const isAvailable = (p) => (now - p.lastRequest) >= p.rateLimit && p.name !== excludeName;
     
