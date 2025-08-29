@@ -101,6 +101,46 @@ class MemorAIzationApp {
     
     // Dice statistics
     this.setupDiceStatistics();
+
+    // Toggle practice mode
+    const toggleBtn = document.getElementById('toggle-practice-mode-btn');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const currentMode = memoryState.get('pao.practiceMode');
+        const newMode = currentMode === 'normal' ? 'reverse' : 'normal';
+        memoryState.set('pao.practiceMode', newMode);
+        toggleBtn.textContent = newMode === 'normal' ? 'Reverse Mode' : 'Normal Mode';
+      });
+    }
+
+    // Start challenge
+    const startChallengeBtn = document.getElementById('start-challenge-btn');
+    if (startChallengeBtn) {
+      startChallengeBtn.addEventListener('click', () => {
+        this.startChallenge();
+      });
+    }
+
+    // Performance toggle
+    const performanceToggle = document.getElementById('performance-toggle');
+    const performanceDashboard = document.getElementById('performance-dashboard');
+    if (performanceToggle && performanceDashboard) {
+      performanceToggle.addEventListener('click', () => {
+        performanceDashboard.classList.toggle('hidden');
+        performanceToggle.textContent = performanceDashboard.classList.contains('hidden') ? 'Show Performance' : 'Hide Performance';
+      });
+    }
+
+    // Hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburgerBtn && mobileMenu) {
+      hamburgerBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      });
+    }
   }
   
   // Set up AI controls
@@ -501,6 +541,48 @@ class MemorAIzationApp {
     this.isInitialized = false;
     
     console.log('🧹 Application cleaned up');
+  }
+
+  startChallenge() {
+    let timeLeft = 60;
+    let score = 0;
+    const timerEl = document.getElementById('timer');
+    const rollBtn = document.getElementById('roll-btn');
+    const resultEl = document.getElementById('roll-result');
+
+    const timerInterval = setInterval(() => {
+      timeLeft--;
+      const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+      const seconds = (timeLeft % 60).toString().padStart(2, '0');
+      timerEl.textContent = `${minutes}:${seconds}`;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        alert(`Challenge finished! Your score is ${score}`);
+        rollBtn.disabled = false;
+      }
+    }, 1000);
+
+    rollBtn.disabled = true;
+
+    const challengeRollBtn = document.createElement('button');
+    challengeRollBtn.textContent = 'Roll';
+    challengeRollBtn.className = 'px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded';
+    resultEl.appendChild(challengeRollBtn);
+
+    challengeRollBtn.addEventListener('click', () => {
+      const rolls = [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
+      const twoDigit = rolls[0] * 10 + rolls[1];
+      const result = memoryEngine.practicePAO(twoDigit.toString());
+
+      const answer = prompt(`What is the person for ${twoDigit}?`);
+      if (answer && answer.toLowerCase() === result.result.name.toLowerCase()) {
+        score++;
+        resultEl.textContent = `Correct! Score: ${score}`;
+      } else {
+        resultEl.textContent = `Wrong! The correct answer is ${result.result.name}. Score: ${score}`;
+      }
+    });
   }
 }
 

@@ -88,6 +88,7 @@ class MemoryCard {
             </div>
           </div>
           <div class="card-name" data-card-name></div>
+          <div class="card-due-date" data-due-date></div>
         </div>
         
         <div class="card-face card-back" data-card-back>
@@ -100,6 +101,9 @@ class MemoryCard {
             <button class="btn btn-secondary edit-btn" data-edit-btn>
               <span class="btn-text">Edit Image</span>
               <span class="btn-loading hidden">Editing...</span>
+            </button>
+            <button class="btn btn-secondary practice-btn" data-practice-btn>
+              <span class="btn-text">Practice</span>
             </button>
           </div>
         </div>
@@ -131,6 +135,12 @@ class MemoryCard {
     const imageContainer = this.element.querySelector('[data-card-image-container]');
     if (imageContainer) {
       imageContainer.addEventListener('click', (e) => this.handleImageCycle(e));
+    }
+
+    // Practice button
+    const practiceBtn = this.element.querySelector('[data-practice-btn]');
+    if (practiceBtn) {
+      practiceBtn.addEventListener('click', (e) => this.handlePractice(e));
     }
     
     // Intersection observer for lazy loading
@@ -229,6 +239,26 @@ class MemoryCard {
         <div class="card-object">${this.data.object || ''}</div>
         ${this.data.emojiStory ? `<div class="card-emoji-story">${this.data.emojiStory}</div>` : ''}
       `;
+    }
+
+    // Update due date
+    const dueDateEl = this.element.querySelector('[data-due-date]');
+    if (dueDateEl) {
+      const item = memoryState.get(`pao.data.${this.data.number}`);
+      if (item && item.sr && item.sr.dueDate) {
+        const dueDate = new Date(item.sr.dueDate);
+        const now = new Date();
+        if (dueDate <= now) {
+          dueDateEl.textContent = `Due: ${dueDate.toLocaleDateString()}`;
+          this.element.classList.add('due');
+        } else {
+          dueDateEl.textContent = `Due: ${dueDate.toLocaleDateString()}`;
+          this.element.classList.remove('due');
+        }
+      } else {
+        dueDateEl.textContent = '';
+        this.element.classList.remove('due');
+      }
     }
   }
   
@@ -410,6 +440,31 @@ class MemoryCard {
       this.showFeedback('Image generation failed', 'error');
     } finally {
       this.setLoading(false);
+    }
+  }
+
+  // Handle practice
+  handlePractice(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const quality = window.prompt('Enter quality score (0-5):');
+    if (quality === null || quality === '') {
+      return;
+    }
+
+    const qualityScore = parseInt(quality, 10);
+    if (isNaN(qualityScore) || qualityScore < 0 || qualityScore > 5) {
+      alert('Invalid quality score. Please enter a number between 0 and 5.');
+      return;
+    }
+
+    const result = memoryEngine.practice(this.data.number, qualityScore);
+    if (result.success) {
+      this.showFeedback('Practice recorded successfully', 'success');
+      this.render();
+    } else {
+      this.showFeedback('Failed to record practice', 'error');
     }
   }
   
