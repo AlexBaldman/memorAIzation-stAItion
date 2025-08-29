@@ -4,6 +4,7 @@
  */
 
 import memoryState from './state.js';
+import { sm2, createSpacedRepetitionItem } from './spaced-repetition.js';
 
 class MemoryEngine {
   constructor() {
@@ -96,6 +97,7 @@ class MemoryEngine {
       memoryState.set('pao.data', data);
       memoryState.set('pao.lookup', lookup);
       memoryState.set('pao.initialized', true);
+      memoryState.set('pao.practiceMode', 'normal');
       
       const endTime = performance.now();
       this.recordPerformance('pao.init', endTime - startTime);
@@ -114,44 +116,42 @@ class MemoryEngine {
     try {
       const data = memoryState.get('pao.data');
       const lookup = memoryState.get('pao.lookup');
+      const practiceMode = memoryState.get('pao.practiceMode');
       
       if (!data || !lookup) {
         throw new Error('PAO system not initialized');
       }
       
-      // Parse input (could be number, initials, name, action, or object)
       let result = null;
-      
-      if (input.match(/^\d{1,2}$/)) {
-        // Number input
-        const padded = input.padStart(2, '0');
-        result = lookup.byNumber.get(padded);
-      } else if (input.match(/^[A-Z]{2}$/)) {
-        // Initials input
-        result = lookup.byInitials.get(input);
-      } else {
-        // Text search (name, action, or object)
+
+      if (practiceMode === 'reverse') {
+        // In reverse mode, the input is the name, and we expect the number.
         const searchTerm = input.toLowerCase();
-        result = lookup.byName.get(searchTerm) || 
-                 lookup.byAction.get(searchTerm) || 
-                 lookup.byObject.get(searchTerm);
+        result = lookup.byName.get(searchTerm);
+      } else {
+        // In normal mode, the input is the number, and we expect the name.
+        if (input.match(/^\d{1,2}$/)) {
+          const padded = input.padStart(2, '0');
+          result = lookup.byNumber.get(padded);
+        } else if (input.match(/^[A-Z]{2}$/)) {
+          result = lookup.byInitials.get(input);
+        } else {
+          const searchTerm = input.toLowerCase();
+          result = lookup.byName.get(searchTerm) ||
+                   lookup.byAction.get(searchTerm) ||
+                   lookup.byObject.get(searchTerm);
+        }
       }
       
       if (result) {
-        // Update practice statistics
-        const stats = memoryState.get('pao.statistics') || { totalPractices: 0, correctRecalls: 0 };
-        stats.totalPractices++;
-        stats.correctRecalls++;
-        memoryState.set('pao.statistics', stats);
-        
         const endTime = performance.now();
         this.recordPerformance('pao.practice', endTime - startTime);
-        
+
         return {
           success: true,
           result,
           responseTime: endTime - startTime,
-          difficulty: this.calculateDifficulty(input, result)
+          difficulty: this.calculateDifficulty(input, result),
         };
       } else {
         return { success: false, error: 'No match found' };
@@ -301,6 +301,55 @@ class MemoryEngine {
   practiceDominic(input) {
     // Placeholder for Dominic System practice
     return { success: false, error: 'Dominic System not yet implemented' };
+  }
+
+  // Practice an item with a quality score
+  practice(itemId, quality) {
+    const item = memoryState.get(`pao.data.${itemId}`);
+    if (!item) {
+      return { success: false, error: 'Item not found' };
+    }
+
+    let srData = item.sr || createSpacedRepetitionItem();
+
+    const { interval, repetitions, easiness } = sm2(
+      quality,
+      srData.repetitions,
+      srData.easiness,
+      srData.interval
+    );
+
+    const updatedSrData = {
+      ...srData,
+      interval,
+      repetitions,
+      easiness,
+      dueDate: new Date(Date.now() + interval * 24 * 60 * 60 * 1000),
+    };
+
+    memoryState.set(`pao.data.${itemId}.sr`, updatedSrData);
+
+    return { success: true, item, srData: updatedSrData };
+  }
+
+  // Get items that are due for repetition
+  getDueItems() {
+    const paoData = memoryState.get('pao.data');
+    if (!paoData) {
+      return [];
+    }
+
+    const now = new Date();
+    const dueItems = [];
+
+    for (const itemId in paoData) {
+      const item = paoData[itemId];
+      if (item.sr && item.sr.dueDate && new Date(item.sr.dueDate) <= now) {
+        dueItems.push(item);
+      }
+    }
+
+    return dueItems;
   }
   
   // Validation methods
