@@ -7,6 +7,7 @@ import memoryState from './core/state.js';
 import memoryEngine from './core/memory-engine.js';
 import aiService from './services/ai-service.js';
 import MemoryCard from './components/memory-card.js';
+import { initDicePracticeComponent } from './components/dice-practice.js';
 
 class MemorAIzationApp {
   constructor() {
@@ -90,6 +91,9 @@ class MemorAIzationApp {
 
   // Set up UI event listeners
   setupUI() {
+    // Initialize UI components
+    initDicePracticeComponent();
+
     // AI configuration controls
     this.setupAIControls();
 
