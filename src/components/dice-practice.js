@@ -44,10 +44,16 @@ export function initDicePracticeComponent() {
   const modal = document.getElementById('session-modal');
   const closeBtn = document.getElementById('close-modal');
 
+  // If the elements don't exist, we can't initialize the component.
+  if (!container || !rollBtn || !resultEl || !historyBtn || !modal || !closeBtn) {
+    return;
+  }
+
   const dice = [new Die(6), new Die(6), new Die(10), new Die(10)];
   const dieElements = [];
 
   // Create DOM elements for the dice
+  container.innerHTML = ''; // Clear any existing dice
   for (let i = 0; i < 4; i++) {
     const el = document.createElement('div');
     el.className = 'die w-16 h-16 bg-zinc-200 text-zinc-800 rounded flex items-center justify-center text-2xl font-bold shadow-inner';
@@ -97,7 +103,7 @@ export function initDicePracticeComponent() {
   // Subscribe to state changes to keep localStorage in sync
   memoryState.subscribe('dice.session', (session) => {
     // If the modal is open, re-render it
-    if (!modal.classList.contains('hidden')) {
+    if (modal && !modal.classList.contains('hidden')) {
       renderSession(session);
     }
     // Persist to localStorage
@@ -108,5 +114,3 @@ export function initDicePracticeComponent() {
     }
   });
 }
-
-document.addEventListener('DOMContentLoaded', initDicePracticeComponent);

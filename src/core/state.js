@@ -30,6 +30,13 @@ class MemoryState {
         },
       },
 
+      // Peg system state
+      peg: {
+        data: [],
+        lookup: null,
+        initialized: false,
+      },
+
       // AI configuration
       ai: {
         provider: 'hf',
@@ -54,6 +61,12 @@ class MemoryState {
           reducedMotion: false,
           fontSize: 'medium',
         },
+      },
+
+      // Theme builder state
+      themeBuilder: {
+        layouts: {}, // key: themeUrl, value: serialized layout
+        activeTheme: null,
       },
 
       // Performance metrics

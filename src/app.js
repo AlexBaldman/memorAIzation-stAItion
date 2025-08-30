@@ -8,6 +8,8 @@ import memoryEngine from './core/memory-engine.js';
 import aiService from './services/ai-service.js';
 import MemoryCard from './components/memory-card.js';
 import { initDicePracticeComponent } from './components/dice-practice.js';
+import { initPegBoardComponent } from './components/peg-board.js';
+import { initThemeBuilderComponent } from './components/theme-builder.js';
 
 class MemorAIzationApp {
   constructor() {
@@ -93,6 +95,8 @@ class MemorAIzationApp {
   setupUI() {
     // Initialize UI components
     initDicePracticeComponent();
+    initPegBoardComponent();
+    initThemeBuilderComponent();
 
     // AI configuration controls
     this.setupAIControls();

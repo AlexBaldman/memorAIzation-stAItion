@@ -192,8 +192,14 @@ class MemoryEngine {
 
   // Initialize Peg System
   async initPegSystem() {
+    if (memoryState.get('peg.initialized')) {
+      return { success: true, fromCache: true };
+    }
     try {
       const response = await fetch('data/pegs.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
 
       // Create optimized lookup
@@ -202,13 +208,17 @@ class MemoryEngine {
         lookup.set(peg.number, peg);
       });
 
-      memoryState.set('peg.data', data);
-      memoryState.set('peg.lookup', lookup);
-      memoryState.set('peg.initialized', true);
+      // Use batch update for efficiency
+      memoryState.batch([
+        ['peg.data', data],
+        ['peg.lookup', lookup],
+        ['peg.initialized', true]
+      ]);
 
       return { success: true, count: data.length };
     } catch (error) {
       console.error('Failed to initialize Peg system:', error);
+      memoryState.set('peg.initialized', false);
       return { success: false, error: error.message };
     }
   }
