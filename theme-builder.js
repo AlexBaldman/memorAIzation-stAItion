@@ -6,10 +6,12 @@ async function loadJSON(url) {
 }
 
 function makeDraggable(el) {
-  let startX = 0, startY = 0, origX = 0, origY = 0;
+  let startX = 0,
+    startY = 0,
+    origX = 0,
+    origY = 0;
   function onDown(e) {
     e.preventDefault();
-    const rect = el.getBoundingClientRect();
     startX = e.clientX;
     startY = e.clientY;
     origX = el.offsetLeft;
@@ -68,24 +70,25 @@ function createComponentNode(comp) {
 
 function serializeLayout(canvas) {
   const out = [];
-  canvas.querySelectorAll('[data-comp-id]')
-    .forEach(el => {
-      out.push({
-        id: el.dataset.compId,
-        x: el.offsetLeft,
-        y: el.offsetTop,
-        w: el.offsetWidth,
-        h: el.offsetHeight,
-        style: el.getAttribute('style')
-      });
+  canvas.querySelectorAll('[data-comp-id]').forEach((el) => {
+    out.push({
+      id: el.dataset.compId,
+      x: el.offsetLeft,
+      y: el.offsetTop,
+      w: el.offsetWidth,
+      h: el.offsetHeight,
+      style: el.getAttribute('style'),
     });
+  });
   return out;
 }
 
 function restoreLayout(canvas, theme, saved) {
   if (!Array.isArray(saved)) return;
-  const byId = Object.fromEntries((theme.components || []).map(c => [c.id, c]));
-  saved.forEach(item => {
+  const byId = Object.fromEntries(
+    (theme.components || []).map((c) => [c.id, c])
+  );
+  saved.forEach((item) => {
     const base = byId[item.id];
     if (!base) return;
     const node = createComponentNode(base);
@@ -110,10 +113,11 @@ async function initThemeBuilder() {
     canvas.innerHTML = '';
     const theme = await loadJSON(url);
     // populate components list
-    (theme.components || []).forEach(comp => {
+    (theme.components || []).forEach((comp) => {
       const li = document.createElement('li');
       const btn = document.createElement('button');
-      btn.className = 'w-full px-2 py-1 rounded bg-zinc-700 hover:bg-zinc-600 text-left';
+      btn.className =
+        'w-full px-2 py-1 rounded bg-zinc-700 hover:bg-zinc-600 text-left';
       btn.textContent = comp.label || comp.id;
       btn.addEventListener('click', () => {
         const node = createComponentNode(comp);

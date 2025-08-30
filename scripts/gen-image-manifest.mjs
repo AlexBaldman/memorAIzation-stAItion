@@ -15,17 +15,22 @@ function parseFilename(file) {
   const numMatch = withoutExt.match(/^(\d{1,3})\b/);
   const variantMatch = withoutExt.match(/(?:^|[^\d])(\d+)$/);
   const number = numMatch ? numMatch[1].padStart(2, '0') : null;
-  const variant = variantMatch && numMatch && variantMatch.index > numMatch[0].length ? parseInt(variantMatch[1], 10) : 1;
+  const variant =
+    variantMatch && numMatch && variantMatch.index > numMatch[0].length
+      ? parseInt(variantMatch[1], 10)
+      : 1;
   return { number, variant };
 }
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
-  const files = await Promise.all(entries.map(async (ent) => {
-    const res = path.resolve(dir, ent.name);
-    if (ent.isDirectory()) return walk(res);
-    return res;
-  }));
+  const files = await Promise.all(
+    entries.map(async (ent) => {
+      const res = path.resolve(dir, ent.name);
+      if (ent.isDirectory()) return walk(res);
+      return res;
+    })
+  );
   return files.flat();
 }
 
@@ -44,13 +49,17 @@ async function main() {
     }
     // sort each array by variant then lexicographically
     for (const k of Object.keys(manifest)) {
-      manifest[k].sort((a, b) => a.variant - b.variant || a.path.localeCompare(b.path));
+      manifest[k].sort(
+        (a, b) => a.variant - b.variant || a.path.localeCompare(b.path)
+      );
       // reduce to just paths for client simplicity
-      manifest[k] = manifest[k].map(x => x.path);
+      manifest[k] = manifest[k].map((x) => x.path);
     }
     await fs.mkdir(path.dirname(OUT_FILE), { recursive: true });
     await fs.writeFile(OUT_FILE, JSON.stringify(manifest, null, 2), 'utf8');
-    console.log(`Wrote manifest with ${Object.keys(manifest).length} keys -> ${path.relative(ROOT, OUT_FILE)}`);
+    console.log(
+      `Wrote manifest with ${Object.keys(manifest).length} keys -> ${path.relative(ROOT, OUT_FILE)}`
+    );
   } catch (err) {
     console.error('Failed to generate manifest:', err);
     process.exit(1);

@@ -4,7 +4,8 @@ class Die {
     this.sides = sides;
     this.value = 1;
     this.el = document.createElement('div');
-    this.el.className = 'die w-16 h-16 bg-zinc-200 text-zinc-800 rounded flex items-center justify-center text-2xl font-bold shadow-inner';
+    this.el.className =
+      'die w-16 h-16 bg-zinc-200 text-zinc-800 rounded flex items-center justify-center text-2xl font-bold shadow-inner';
     this.el.setAttribute('aria-label', label);
     container.appendChild(this.el);
     this.render();
@@ -27,7 +28,12 @@ export function initDicePractice() {
   const resultEl = document.getElementById('roll-result');
 
   // two D6 standard + two D10 for PAO
-  const dice = [new Die(6, container, 'd6-1'), new Die(6, container, 'd6-2'), new Die(10, container, 'd10-1'), new Die(10, container, 'd10-2')];
+  const dice = [
+    new Die(6, container, 'd6-1'),
+    new Die(6, container, 'd6-2'),
+    new Die(10, container, 'd10-1'),
+    new Die(10, container, 'd10-2'),
+  ];
 
   const sessionKey = 'dice-session';
   function loadSession() {
@@ -45,9 +51,9 @@ export function initDicePractice() {
 
   function renderSession() {
     modalList.innerHTML = '';
-    loadSession().forEach(item => {
+    loadSession().forEach((item) => {
       const li = document.createElement('li');
-      li.textContent = `${new Date(item.timestamp).toLocaleTimeString()} – ${String(item.twoDigit).padStart(2,'0')} (${item.rolls.join(',')})`;
+      li.textContent = `${new Date(item.timestamp).toLocaleTimeString()} – ${String(item.twoDigit).padStart(2, '0')} (${item.rolls.join(',')})`;
       modalList.appendChild(li);
     });
   }
@@ -59,10 +65,10 @@ export function initDicePractice() {
 
   rollBtn.addEventListener('click', () => {
     const timestamp = Date.now();
-    const rolls = dice.map(d => {
+    const rolls = dice.map((d) => {
       const val = d.roll();
       d.el.classList.add('shake');
-      setTimeout(()=>d.el.classList.remove('shake'),600);
+      setTimeout(() => d.el.classList.remove('shake'), 600);
       return val;
     });
     const twoDigit = rolls[2] * 10 + rolls[3];

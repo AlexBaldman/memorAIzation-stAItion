@@ -5,7 +5,8 @@ let IMAGE_MANIFEST = {};
 // ---------------- Image Generation Config ----------------
 // Config is user-selectable via UI and persisted in localStorage
 const HF_TOKEN = import.meta.env.VITE_HF_TOKEN;
-const DEFAULT_PROVIDER = import.meta.env.VITE_IMAGE_PROVIDER || (HF_TOKEN ? 'hf' : 'qwen');
+const DEFAULT_PROVIDER =
+  import.meta.env.VITE_IMAGE_PROVIDER || (HF_TOKEN ? 'hf' : 'qwen');
 const DEFAULT_MODEL = 'stabilityai/stable-diffusion-2';
 
 function getAIConfig() {
@@ -25,20 +26,23 @@ async function generateImage(prompt) {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${HF_TOKEN}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ inputs: prompt })
+      body: JSON.stringify({ inputs: prompt }),
     });
     if (!res.ok) throw new Error('HF request failed');
     return res.blob();
   }
 
   // fallback to Qwen demo endpoint (no auth required at time of writing)
-  const res = await fetch('https://api-inference.huggingface.co/models/qwen/Qwen-72B-Image', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ inputs: prompt })
-  });
+  const res = await fetch(
+    'https://api-inference.huggingface.co/models/qwen/Qwen-72B-Image',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ inputs: prompt }),
+    }
+  );
   if (!res.ok) throw new Error('Qwen request failed');
   return res.blob();
 }
@@ -49,7 +53,7 @@ async function getImageBlobFromElement(img) {
   try {
     const res = await fetch(img.src, { mode: 'cors' });
     if (res.ok) return await res.blob();
-  } catch (_) {
+  } catch {
     // fallback to canvas extraction
   }
   try {
@@ -59,22 +63,25 @@ async function getImageBlobFromElement(img) {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0);
     return await new Promise((resolve) => canvas.toBlob(resolve));
-  } catch (_) {
+  } catch {
     return null;
   }
 }
 
 // Provider-aware image editing (img2img). Currently supports Qwen Image Edit.
 async function editImage(prompt, sourceBlob) {
-  const { provider, model } = getAIConfig();
+  const { provider } = getAIConfig();
   if (provider === 'qwen') {
     const form = new FormData();
     form.append('inputs', sourceBlob || new Blob(), 'input.png');
     form.append('parameters', JSON.stringify({ prompt }));
-    const res = await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen-Image-Edit', {
-      method: 'POST',
-      body: form
-    });
+    const res = await fetch(
+      'https://api-inference.huggingface.co/models/Qwen/Qwen-Image-Edit',
+      {
+        method: 'POST',
+        body: form,
+      }
+    );
     if (!res.ok) throw new Error('Qwen img2img request failed');
     return res.blob();
   }
@@ -85,10 +92,14 @@ async function editImage(prompt, sourceBlob) {
 async function loadData() {
   const [peopleRes, manifestRes] = await Promise.all([
     fetch('data/memory-people.json'),
-    fetch('data/images/manifest.json').catch(() => null)
+    fetch('data/images/manifest.json').catch(() => null),
   ]);
   if (manifestRes && manifestRes.ok) {
-    try { IMAGE_MANIFEST = await manifestRes.json(); } catch (_) { IMAGE_MANIFEST = {}; }
+    try {
+      IMAGE_MANIFEST = await manifestRes.json();
+    } catch {
+      IMAGE_MANIFEST = {};
+    }
   }
   return peopleRes.json();
 }
@@ -107,7 +118,8 @@ function createCard(entry) {
     const saved = localStorage.getItem(choiceKey);
     if (saved !== null) {
       const idx = parseInt(saved, 10);
-      if (!Number.isNaN(idx) && idx >= 0 && idx < localList.length) choiceIdx = idx;
+      if (!Number.isNaN(idx) && idx >= 0 && idx < localList.length)
+        choiceIdx = idx;
     }
     img.src = localList[choiceIdx];
   } else {
@@ -115,7 +127,8 @@ function createCard(entry) {
   }
   img.alt = `${entry.name} portrait photograph`;
   node.querySelector('.card-name').textContent = entry.name;
-  node.querySelector('.card-description').innerHTML = `${entry.number} = ${entry.initials} = ${entry.name}`;
+  node.querySelector('.card-description').innerHTML =
+    `${entry.number} = ${entry.initials} = ${entry.name}`;
 
   // flip on hover handled via CSS; ensure inner rotates on click for touch devices
   node.addEventListener('click', () => {
@@ -158,7 +171,7 @@ function createCard(entry) {
         // When AI image is used, clear local choice index so next load uses cached AI
         localStorage.removeItem(choiceKey);
       }
-    } catch (_) {
+    } catch {
       // fail silently
     } finally {
       btn.disabled = false;
@@ -171,7 +184,9 @@ function createCard(entry) {
   if (editBtn) {
     editBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
-      const promptInput = window.prompt('Describe your edit (e.g., make pixel-art style, increase contrast):');
+      const promptInput = window.prompt(
+        'Describe your edit (e.g., make pixel-art style, increase contrast):'
+      );
       if (!promptInput) return;
       const prev = editBtn.textContent;
       editBtn.disabled = true;
@@ -187,7 +202,7 @@ function createCard(entry) {
           img.src = url;
           localStorage.removeItem(choiceKey);
         }
-      } catch (_) {
+      } catch {
         // no-op
       } finally {
         editBtn.disabled = false;
@@ -215,9 +230,9 @@ function initAIControls() {
   });
 }
 
-loadData().then(data => {
+loadData().then((data) => {
   initAIControls();
-  Object.values(data).forEach(entry => {
+  Object.values(data).forEach((entry) => {
     container.appendChild(createCard(entry));
   });
 });
