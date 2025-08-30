@@ -154,19 +154,19 @@ class MyComponent {
     this.options = { ...defaultOptions, ...options };
     this.element = null;
     this.observers = new Map();
-    
+
     this.init();
   }
-  
+
   init() {
     this.createElement();
     this.setupEventListeners();
     this.setupAccessibility();
     this.render();
   }
-  
+
   // ... other methods
-  
+
   destroy() {
     // Cleanup observers and event listeners
     this.observers.forEach(unsubscribe => unsubscribe());
@@ -218,14 +218,14 @@ memoryState.batch([
 ```javascript
 /**
  * Memory Card Component - High-performance card for memory training
- * 
+ *
  * @class MemoryCard
  * @param {Object} data - Card data including number, name, and associations
  * @param {Object} options - Configuration options for the component
  * @param {boolean} options.enableAnimations - Enable card animations
  * @param {boolean} options.enableAI - Enable AI image generation
  * @param {boolean} options.enableAccessibility - Enable accessibility features
- * 
+ *
  * @example
  * const card = new MemoryCard(cardData, {
  *   enableAnimations: true,
@@ -270,7 +270,7 @@ class MemoryCard {
 describe('MemoryCard', () => {
   let card;
   let mockData;
-  
+
   beforeEach(() => {
     mockData = {
       number: '42',
@@ -279,23 +279,23 @@ describe('MemoryCard', () => {
     };
     card = new MemoryCard(mockData);
   });
-  
+
   afterEach(() => {
     card.destroy();
   });
-  
+
   describe('initialization', () => {
     it('should create card element', () => {
       expect(card.getElement()).toBeTruthy();
     });
-    
+
     it('should set up accessibility features', () => {
       const element = card.getElement();
       expect(element.getAttribute('role')).toBe('button');
       expect(element.getAttribute('aria-label')).toContain('Test Celebrity');
     });
   });
-  
+
   describe('interactions', () => {
     it('should flip card on click', () => {
       const element = card.getElement();

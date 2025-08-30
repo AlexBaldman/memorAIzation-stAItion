@@ -64,7 +64,7 @@ The PAO system transforms abstract numbers into vivid, memorable scenes:
 {
   "00": {
     "number": "00",
-    "initials": "OO", 
+    "initials": "OO",
     "name": "Ozzy Osbourne",
     "action": "biting the head off",
     "object": "bat",

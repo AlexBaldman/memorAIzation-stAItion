@@ -18,7 +18,7 @@ By the end of this guide, you'll be able to:
 **memorAIzation stAItion** is a cutting-edge memory training platform that combines:
 
 - **🎭 PAO System**: Maps numbers 00-99 to memorable celebrity associations
-- **🎯 Peg System**: Visual anchors for digits 0-9 using intuitive imagery  
+- **🎯 Peg System**: Visual anchors for digits 0-9 using intuitive imagery
 - **🎲 Dice Practice**: Interactive training for generating and practicing PAO numbers
 - **🎨 AI-Powered Imagery**: Dynamic image generation to reinforce memory associations
 
