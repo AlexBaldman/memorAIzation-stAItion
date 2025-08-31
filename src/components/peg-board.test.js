@@ -16,11 +16,16 @@ vi.mock('../core/state.js', () => {
 
 // Mock the memoryEngine module
 vi.mock('../core/memory-engine.js', () => {
-    return {
-      default: {
-        practicePeg: vi.fn().mockReturnValue({ success: true, result: { number: '1', name: 'One' } }),
-      }
-    };
+  return {
+    default: {
+      practicePeg: vi
+        .fn()
+        .mockReturnValue({
+          success: true,
+          result: { number: '1', name: 'One' },
+        }),
+    },
+  };
 });
 
 // Setting up a basic DOM environment

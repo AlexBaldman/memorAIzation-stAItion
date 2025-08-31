@@ -31,6 +31,10 @@ npm run build
 
 # Generate image manifest (if you have custom images)
 npm run gen:images
+
+# Lint and format code
+npm run lint
+npm run format
 ```
 
 ## 🏗️ Architecture Overview
@@ -83,28 +87,7 @@ The PAO system transforms abstract numbers into vivid, memorable scenes:
 - **Visual Hierarchy**: Clear distinction between front/back information
 - **Interactive Elements**: Click-to-flip maintains engagement
 
-## 🔧 Technical Deep Dive
-
-### Performance Optimizations
-- **Lazy Loading**: Images load only when needed
-- **Local Storage**: Intelligent caching of AI-generated content
-- **Efficient DOM**: Minimal re-renders and optimized event handling
-- **CSS Transforms**: Hardware-accelerated card animations
-
-### Code Quality Principles (Carmack-inspired)
-- **Single Responsibility**: Each module handles one memory system
-- **Explicit State**: Clear data flow and state management
-- **Error Handling**: Graceful degradation when AI services fail
-- **Memory Efficiency**: Minimal object creation and garbage collection
-
-### Key Modules
-- `main.js`: Core PAO system and card management
-- `dice.js`: Interactive dice practice with session tracking
-- `pegboard.js`: Visual peg system implementation
-- `theme-builder.js`: Customizable UI theme system
-
 ## 🎨 Customization & Theming
-
 ### Theme Builder
 The alpha theme builder allows custom layouts:
 - **Component System**: Drag-and-drop interface elements
@@ -165,27 +148,6 @@ const blob = await generateImage(prompt);
 - **Response Time**: Measure speed of number-to-celebrity recall
 - **Accuracy Tracking**: Monitor error rates in practice sessions
 - **Engagement Metrics**: Track time spent in different training modes
-
-## 🛠️ Development & Contributing
-
-### Code Standards
-- **ES6+ Features**: Modern JavaScript with broad browser support
-- **Semantic HTML**: Accessible markup for all users
-- **CSS Best Practices**: Utility-first styling with Tailwind CSS
-- **Performance First**: Optimize for memory and CPU efficiency
-
-### Testing Strategy
-- **Memory Accuracy**: Validate PAO associations
-- **Performance Benchmarks**: Measure rendering and interaction speed
-- **Accessibility**: Ensure usability for diverse users
-- **Cross-browser**: Test across major browsers and devices
-
-### Future Enhancements
-- **Spaced Repetition Algorithm**: Intelligent review scheduling
-- **Memory Palace Builder**: 3D spatial memory environments
-- **Social Features**: Share and compare memory techniques
-- **Mobile App**: Native iOS/Android applications
-- **VR Integration**: Immersive memory training experiences
 
 ## 📚 Learning Resources
 

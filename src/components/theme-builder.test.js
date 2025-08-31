@@ -17,7 +17,7 @@ vi.mock('../core/state.js', () => {
       subscribe: vi.fn(),
       __reset: () => {
         state = { 'themeBuilder.layouts': {} };
-      }
+      },
     },
   };
 });
@@ -26,12 +26,13 @@ vi.mock('../core/state.js', () => {
 global.fetch = vi.fn(() =>
   Promise.resolve({
     ok: true,
-    json: () => Promise.resolve({
-      components: [
-        { id: 'title', label: 'Title', type: 'title' },
-        { id: 'art', label: 'Art', type: 'art' },
-      ],
-    }),
+    json: () =>
+      Promise.resolve({
+        components: [
+          { id: 'title', label: 'Title', type: 'title' },
+          { id: 'art', label: 'Art', type: 'art' },
+        ],
+      }),
   })
 );
 
@@ -57,7 +58,6 @@ global.document = dom.window.document;
 global.window = dom.window;
 global.HTMLElement = dom.window.HTMLElement;
 
-
 describe('Theme Builder Component', async () => {
   beforeEach(() => {
     document.body.innerHTML = dom.window.document.body.innerHTML;
@@ -66,16 +66,16 @@ describe('Theme Builder Component', async () => {
 
     // Mock localStorage
     const localStorageMock = (() => {
-        let store = {};
-        return {
-            getItem: (key) => store[key] || null,
-            setItem: (key, value) => {
-                store[key] = value.toString();
-            },
-            clear: () => {
-                store = {};
-            },
-        };
+      let store = {};
+      return {
+        getItem: (key) => store[key] || null,
+        setItem: (key, value) => {
+          store[key] = value.toString();
+        },
+        clear: () => {
+          store = {};
+        },
+      };
     })();
     Object.defineProperty(window, 'localStorage', { value: localStorageMock });
   });
@@ -99,8 +99,13 @@ describe('Theme Builder Component', async () => {
     const saveBtn = document.getElementById('save-theme-layout');
     saveBtn.click();
 
-    expect(memoryState.set).toHaveBeenCalledWith('themeBuilder.layouts', expect.any(Object));
-    const lastCallArgs = vi.mocked(memoryState.set).mock.calls.find(c => c[0] === 'themeBuilder.layouts');
+    expect(memoryState.set).toHaveBeenCalledWith(
+      'themeBuilder.layouts',
+      expect.any(Object)
+    );
+    const lastCallArgs = vi
+      .mocked(memoryState.set)
+      .mock.calls.find((c) => c[0] === 'themeBuilder.layouts');
     const savedLayouts = lastCallArgs[1];
     expect(savedLayouts['data/themes/default.json']).toHaveLength(1);
     expect(savedLayouts['data/themes/default.json'][0].id).toBe('title');

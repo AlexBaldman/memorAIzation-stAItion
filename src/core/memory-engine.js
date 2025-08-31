@@ -212,7 +212,7 @@ class MemoryEngine {
       memoryState.batch([
         ['peg.data', data],
         ['peg.lookup', lookup],
-        ['peg.initialized', true]
+        ['peg.initialized', true],
       ]);
 
       return { success: true, count: data.length };

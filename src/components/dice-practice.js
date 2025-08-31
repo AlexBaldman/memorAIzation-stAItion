@@ -45,7 +45,14 @@ export function initDicePracticeComponent() {
   const closeBtn = document.getElementById('close-modal');
 
   // If the elements don't exist, we can't initialize the component.
-  if (!container || !rollBtn || !resultEl || !historyBtn || !modal || !closeBtn) {
+  if (
+    !container ||
+    !rollBtn ||
+    !resultEl ||
+    !historyBtn ||
+    !modal ||
+    !closeBtn
+  ) {
     return;
   }
 
@@ -56,7 +63,8 @@ export function initDicePracticeComponent() {
   container.innerHTML = ''; // Clear any existing dice
   for (let i = 0; i < 4; i++) {
     const el = document.createElement('div');
-    el.className = 'die w-16 h-16 bg-zinc-200 text-zinc-800 rounded flex items-center justify-center text-2xl font-bold shadow-inner';
+    el.className =
+      'die w-16 h-16 bg-zinc-200 text-zinc-800 rounded flex items-center justify-center text-2xl font-bold shadow-inner';
     el.setAttribute('aria-label', i < 2 ? `d6-${i + 1}` : `d10-${i - 1}`);
     container.appendChild(el);
     dieElements.push(el);
@@ -108,9 +116,9 @@ export function initDicePracticeComponent() {
     }
     // Persist to localStorage
     try {
-        localStorage.setItem('dice-session', JSON.stringify(session));
-    } catch(e) {
-        console.warn('Failed to save dice session to localStorage', e);
+      localStorage.setItem('dice-session', JSON.stringify(session));
+    } catch (e) {
+      console.warn('Failed to save dice session to localStorage', e);
     }
   });
 }
