@@ -1,4 +1,4 @@
-import { expect, test, describe, beforeEach, vi, afterEach } from 'vitest';
+import { expect, test, describe, beforeEach, vi } from 'vitest';
 import { JSDOM } from 'jsdom';
 import { initDicePracticeComponent } from './dice-practice.js';
 import { memoryState } from '../core/state.js';
@@ -18,7 +18,7 @@ vi.mock('../core/state.js', () => {
       // Add a reset for our tests
       __reset: () => {
         state = { 'dice.session': [] };
-      }
+      },
     },
   };
 });
@@ -68,7 +68,10 @@ describe('Dice Practice Component', () => {
     expect(memoryState.set).toHaveBeenCalledTimes(1);
 
     // Check that it was called with the correct path
-    expect(memoryState.set).toHaveBeenCalledWith('dice.session', expect.any(Array));
+    expect(memoryState.set).toHaveBeenCalledWith(
+      'dice.session',
+      expect.any(Array)
+    );
 
     // Check that the new session has one entry
     const callArgs = vi.mocked(memoryState.set).mock.calls[0];
@@ -97,7 +100,9 @@ describe('Dice Practice Component', () => {
 
   test('clicking history button should show the modal and render from state', () => {
     // Setup initial state
-    const mockSession = [{ rolls: [1,2,3,4], twoDigit: 34, timestamp: Date.now() }];
+    const mockSession = [
+      { rolls: [1, 2, 3, 4], twoDigit: 34, timestamp: Date.now() },
+    ];
     // Manually set the state in our mock for this test
     memoryState.get.mockReturnValue(mockSession);
 

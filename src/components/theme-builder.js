@@ -117,7 +117,8 @@ export async function initThemeBuilderComponent() {
     (theme.components || []).forEach((comp) => {
       const li = document.createElement('li');
       const btn = document.createElement('button');
-      btn.className = 'w-full px-2 py-1 rounded bg-zinc-700 hover:bg-zinc-600 text-left';
+      btn.className =
+        'w-full px-2 py-1 rounded bg-zinc-700 hover:bg-zinc-600 text-left';
       btn.textContent = comp.label || comp.id;
       btn.addEventListener('click', () => {
         const node = createComponentNode(comp);
@@ -158,21 +159,22 @@ export async function initThemeBuilderComponent() {
   if (typeof localStorage !== 'undefined') {
     memoryState.subscribe('themeBuilder.layouts', (layouts) => {
       try {
-          localStorage.setItem('theme-layouts', JSON.stringify(layouts));
+        localStorage.setItem('theme-layouts', JSON.stringify(layouts));
       } catch (e) {
-          console.warn('Failed to save theme layouts to localStorage', e);
+        console.warn('Failed to save theme layouts to localStorage', e);
       }
     });
 
     // Load persisted layouts on init
     try {
-      const persistedLayouts = JSON.parse(localStorage.getItem('theme-layouts') || '{}');
+      const persistedLayouts = JSON.parse(
+        localStorage.getItem('theme-layouts') || '{}'
+      );
       memoryState.set('themeBuilder.layouts', persistedLayouts);
     } catch (e) {
       console.warn('Failed to load theme layouts from localStorage', e);
     }
   }
-
 
   await loadTheme(select.value);
   select.addEventListener('change', () => loadTheme(select.value));
