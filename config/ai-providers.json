@@ -1,0 +1,64 @@
+{
+  "providers": [
+    {
+      "id": "hf",
+      "name": "Hugging Face",
+      "enabled": true,
+      "priority": 1,
+      "cost": "low",
+      "rateLimit": 1000,
+      "api": {
+        "url": "https://api-inference.huggingface.co/models/{model}",
+        "defaultModel": "stabilityai/stable-diffusion-2",
+        "token_env_var": "VITE_HF_TOKEN"
+      }
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen Demo",
+      "enabled": true,
+      "priority": 2,
+      "cost": "free",
+      "rateLimit": 2000,
+      "api": {
+        "url": "https://api-inference.huggingface.co/models/Qwen/Qwen-Image",
+        "token_env_var": "VITE_HF_TOKEN"
+      }
+    },
+    {
+      "id": "pollinations",
+      "name": "Pollinations",
+      "enabled": true,
+      "priority": 9,
+      "cost": "free",
+      "rateLimit": 500,
+      "api": {
+        "url": "https://image.pollinations.ai/prompt/{prompt}"
+      }
+    },
+    {
+      "id": "open-ai",
+      "name": "OpenAI DALL-E",
+      "enabled": false,
+      "priority": 3,
+      "cost": "medium",
+      "rateLimit": 1000,
+      "api": {
+        "url": "https://api.openai.com/v1/images/generations",
+        "defaultModel": "dall-e-3",
+        "token_env_var": "VITE_OPENAI_TOKEN"
+      }
+    },
+    {
+      "id": "local",
+      "name": "Local Model",
+      "enabled": false,
+      "priority": 10,
+      "cost": "none",
+      "rateLimit": 0,
+      "api": {
+        "url": "http://127.0.0.1:7860/sdapi/v1/txt2img"
+      }
+    }
+  ]
+}
