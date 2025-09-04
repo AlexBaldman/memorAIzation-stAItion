@@ -4,6 +4,12 @@
 
 A cutting-edge web application that combines classical memory techniques with modern AI capabilities to create an immersive, personalized memorization experience. Built with performance, clarity, and cognitive science in mind.
 
+## 🗺️ Project Vision and Roadmap
+
+This project has an ambitious long-term vision, but our current focus is on strengthening the foundations. To understand the project's direction and our current priorities, please see our official project roadmap:
+
+- **[Project Roadmap](ROADMAP.md)**
+
 ## 🎯 What This Is
 
 **memorAIzation stAItion** is a comprehensive memory training platform that implements proven mnemonic systems enhanced by AI-generated imagery. It's designed for memory athletes, students, professionals, and anyone seeking to master the art of memorization.
@@ -163,20 +169,11 @@ const blob = await generateImage(prompt);
 
 ## 🤝 Contributing
 
-We welcome contributions from memory experts, cognitive scientists, and developers:
+We welcome contributions from everyone! Whether you're a developer, a memory athlete, or just someone with a great idea, we'd love your help.
 
-1. **Fork the repository**
-2. **Create a feature branch**
-3. **Implement improvements**
-4. **Add tests and documentation**
-5. **Submit a pull request**
-
-### Areas for Contribution
-- **Memory System Enhancements**: New mnemonic techniques
-- **AI Integration**: Improved image generation and editing
-- **Performance Optimization**: Faster rendering and interactions
-- **Accessibility**: Better support for diverse users
-- **Research Integration**: Evidence-based memory improvements
+- **[Contributing Guide](CONTRIBUTING.md)**: Our main guide for how to get involved with the project, including setup, coding standards, and our review process.
+- **[Developer Guide](docs/DEVELOPER_GUIDE.md)**: Technical details for developers, including the local image workflow.
+- **[AI Provider Setup](docs/AI_PROVIDER_SETUP.md)**: A step-by-step guide on how to configure the AI image generation services.
 
 ## 📄 License
 

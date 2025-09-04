@@ -1,5 +1,7 @@
 # Local Image Workflow
 
+This guide explains how to use local images to override the default AI-generated card art.
+
 ## Goals
 - Use images in `data/images/decks/PAO/` to override default card art.
 - Support multiple options per card and let users cycle selections in the UI.

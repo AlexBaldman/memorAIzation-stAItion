@@ -2,14 +2,8 @@
 > memorAIzation-stAItion@0.1.0 dev
 > vite
 
-Re-optimizing dependencies because lockfile has changed
-Port 5173 is in use, trying another one...
-Port 5174 is in use, trying another one...
-Port 5175 is in use, trying another one...
-Port 5176 is in use, trying another one...
-Port 5177 is in use, trying another one...
 
-  VITE v5.4.19  ready in 906 ms
+  VITE v5.4.19  ready in 247 ms
 
-  ➜  Local:   http://localhost:5178/
+  ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
