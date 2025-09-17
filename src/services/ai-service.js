@@ -75,23 +75,64 @@ class AIService {
         headers['Authorization'] = `Bearer ${token}`;
     }
 
-    const body = provider.api.body || { inputs: prompt };
-    if(options.parameters) {
-        body.parameters = options.parameters;
-    }
+    let body;
+    let response;
+    let blob;
 
-    const response = await fetch(url, {
+    // Provider-specific logic
+    if (provider.id === 'open-ai') {
+      body = {
+        prompt: prompt,
+        model: model,
+        n: 1,
+        size: options.size || '1024x1024',
+        response_format: 'b64_json', // More efficient than fetching a URL
+      };
+
+      response = await fetch(url, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(body),
         cache: 'no-store',
-    });
+      });
 
-    if (!response.ok) {
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('OpenAI API Error:', errorText);
         throw new Error(`${provider.name} request failed: ${response.status} ${response.statusText}`);
+      }
+
+      const jsonResponse = await response.json();
+      const b64_json = jsonResponse.data[0].b64_json;
+      const byteString = atob(b64_json);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      blob = new Blob([ab], { type: 'image/png' });
+
+    } else {
+      // Default Hugging Face / generic logic
+      body = provider.api.body || { inputs: prompt };
+      if (options.parameters) {
+        body.parameters = options.parameters;
+      }
+
+      response = await fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(body),
+        cache: 'no-store',
+      });
+
+      if (!response.ok) {
+        throw new Error(`${provider.name} request failed: ${response.status} ${response.statusText}`);
+      }
+
+      blob = await response.blob();
     }
 
-    const blob = await response.blob();
     return { success: true, image: blob, provider: provider.id, model };
   }
 
