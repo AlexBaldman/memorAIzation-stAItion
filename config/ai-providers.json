@@ -39,8 +39,8 @@
     {
       "id": "open-ai",
       "name": "OpenAI DALL-E",
-      "enabled": false,
-      "priority": 3,
+      "enabled": true,
+      "priority": 2,
       "cost": "medium",
       "rateLimit": 1000,
       "api": {

@@ -45,7 +45,27 @@ Pollinations is a service that provides image generation without requiring an AP
 
 For higher quality or more reliable generation, you may want to use a paid service.
 
-### (Example) Stability AI
+### 1. OpenAI (DALL-E 3)
+
+OpenAI's DALL-E models are capable of producing extremely high-quality and creative images.
+
+**Step 1: Create an OpenAI Account**
+*   Go to [platform.openai.com](https://platform.openai.com/) and sign up.
+*   You may need to add a payment method to your account to access the API.
+
+**Step 2: Get Your API Key**
+*   Once logged in, navigate to the **"API Keys"** section from the left-hand menu.
+*   Create a new secret key. Be sure to copy it immediately, as you won't be able to see it again.
+
+**Step 3: Add Your Key to the Application**
+*   The application needs this key to make requests. The recommended way is to use an environment variable.
+*   Create a `.env` file in the root of the project (if you don't have one already) and add the following line:
+    ```
+    VITE_OPENAI_TOKEN="YOUR_OPENAI_API_KEY"
+    ```
+    Replace `"YOUR_OPENAI_API_KEY"` with the key you just copied.
+
+### 2. (Example) Stability AI
 
 *   **Setup:** You would need to get an API key from Stability AI's platform and add it to the configuration.
 *   **Cost:** Pay-per-image.
