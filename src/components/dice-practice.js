@@ -56,23 +56,34 @@ export function initDicePracticeComponent() {
     return;
   }
 
-  const dice = [new Die(6), new Die(6), new Die(10), new Die(10)];
+  const dice = [new Die(10), new Die(10)]; // Two 10-sided dice (0-9)
   const dieElements = [];
 
   // Create DOM elements for the dice
   container.innerHTML = ''; // Clear any existing dice
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 2; i++) {
     const el = document.createElement('div');
+    // We will style this more appropriately later
     el.className =
-      'die w-16 h-16 bg-zinc-200 text-zinc-800 rounded flex items-center justify-center text-2xl font-bold shadow-inner';
-    el.setAttribute('aria-label', i < 2 ? `d6-${i + 1}` : `d10-${i - 1}`);
+      'die w-24 h-24 bg-white text-gray-800 rounded-lg flex items-center justify-center text-4xl font-bold shadow-lg';
+    el.setAttribute('aria-label', `d10-${i + 1}`);
     container.appendChild(el);
     dieElements.push(el);
   }
 
+  const createDieFace = (value) => {
+    // For a d10 (0-9), we'll just show the number for simplicity,
+    // but with a more "designed" look. Dot patterns for 0-9 are not standard.
+    // A future enhancement could be a visual representation.
+    const face = document.createElement('div');
+    face.className = 'die-face';
+    face.textContent = value;
+    return face.outerHTML;
+  };
+
   const renderDice = () => {
     dice.forEach((d, i) => {
-      dieElements[i].textContent = d.value;
+      dieElements[i].innerHTML = createDieFace(d.value);
     });
   };
 
@@ -90,7 +101,7 @@ export function initDicePracticeComponent() {
 
     renderDice();
 
-    const twoDigit = rolls[2] * 10 + rolls[3];
+    const twoDigit = rolls[0] * 10 + rolls[1];
     resultEl.textContent = `PAO Number: ${String(twoDigit).padStart(2, '0')}`;
 
     // Update state instead of localStorage directly

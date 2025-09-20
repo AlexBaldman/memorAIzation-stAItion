@@ -16,6 +16,7 @@ class MemorAIzationApp {
     this.cards = new Map();
     this.isInitialized = false;
     this.performanceMetrics = new Map();
+    this.initializedViews = new Set();
 
     // Initialize the application
     this.init();
@@ -37,8 +38,13 @@ class MemorAIzationApp {
       // Load initial data
       await this.loadInitialData();
 
-      // Render the application
+      // Render the main view and its controls eagerly
       this.render();
+      this.setupAIControls();
+      this.initializedViews.add('view-cards');
+
+      // Set up router
+      this.setupRouter();
 
       // Set up performance monitoring
       this.setupPerformanceMonitoring();
@@ -98,9 +104,6 @@ class MemorAIzationApp {
     initPegBoardComponent();
     initThemeBuilderComponent();
 
-    // AI configuration controls
-    this.setupAIControls();
-
     // Theme and accessibility controls
     this.setupThemeControls();
 
@@ -155,6 +158,59 @@ class MemorAIzationApp {
         const isOpen = !mobileMenu.classList.contains('hidden');
         hamburgerBtn.setAttribute('aria-expanded', isOpen);
       });
+    }
+  }
+
+  // Set up router for single-page navigation
+  setupRouter() {
+    this.views = document.querySelectorAll('.view');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const viewId = new URL(link.href).hash.substring(1);
+        this.showView(viewId);
+
+        // Close hamburger menu on navigation
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Handle initial view
+    const initialViewId = window.location.hash ? window.location.hash.substring(1) : 'view-cards';
+    this.showView(initialViewId);
+  }
+
+  // Show a specific view and hide others
+  showView(viewId) {
+    this.views.forEach(view => {
+      if (view.id === viewId) {
+        view.classList.remove('hidden');
+      } else {
+        view.classList.add('hidden');
+      }
+    });
+
+    // Lazy-initialize other views the first time they are shown
+    if (!this.initializedViews.has(viewId)) {
+      switch (viewId) {
+        case 'view-dice-practice':
+          // The component is already initialized in setupUI,
+          // but we could add specific logic here if needed.
+          break;
+        case 'view-peg-system':
+          // Peg system is also initialized in setupUI.
+          break;
+        case 'view-theme-builder':
+          // Theme builder is also initialized in setupUI.
+          break;
+      }
+      this.initializedViews.add(viewId);
     }
   }
 
