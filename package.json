@@ -23,6 +23,7 @@
     "jsdom": "^26.1.0",
     "prettier": "^3.6.2",
     "vite": "^5.0.0",
+    "vite-plugin-pwa": "^1.0.3",
     "vitest": "^3.2.4"
   }
 }

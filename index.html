@@ -9,6 +9,10 @@
     <!-- TailwindCSS CDN for rapid styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#1a1a1a" />
   </head>
 
   <body
@@ -28,18 +32,23 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <a
-                href="#dice-section"
-                class="text-gray-300 hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                href="#view-cards"
+                class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >Cards</a
+              >
+              <a
+                href="#view-dice-practice"
+                class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >Dice Practice</a
               >
               <a
-                href="#peg-section"
-                class="text-gray-300 hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                href="#view-peg-system"
+                class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >Peg System</a
               >
               <a
-                href="#theme-builder"
-                class="text-gray-300 hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                href="#view-theme-builder"
+                class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >Theme Builder</a
               >
             </div>
@@ -90,95 +99,102 @@
       <div class="hidden md:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a
-            href="#dice-section"
-            class="text-gray-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            href="#view-cards"
+            class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >🃏 Cards</a
+          >
+          <a
+            href="#view-dice-practice"
+            class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >🎲 Dice Practice</a
           >
           <a
-            href="#peg-section"
-            class="text-gray-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            href="#view-peg-system"
+            class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >🎯 Peg System</a
           >
           <a
-            href="#theme-builder"
-            class="text-gray-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            href="#view-theme-builder"
+            class="nav-link text-gray-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >🎨 Theme Builder</a
           >
         </div>
       </div>
     </header>
-    <div class="max-w-6xl mx-auto text-center mb-8">
-      <h1 class="text-4xl md:text-6xl font-bold text-red-400 drop-shadow-lg">
-        memor<span class="text-blue-400">AI</span>zation st<span
-          class="text-blue-400"
-          >AI</span
-        >tion
-      </h1>
-      <h2 class="text-xl md:text-2xl text-blue-300 mt-2">
-        Celebrity Initials Deck (AI-powered)
-      </h2>
+    <main id="view-cards" class="view">
+      <div class="max-w-6xl mx-auto text-center mb-8">
+        <h1 class="text-4xl md:text-6xl font-bold text-red-400 drop-shadow-lg">
+          memor<span class="text-blue-400">AI</span>zation st<span
+            class="text-blue-400"
+            >AI</span
+          >tion
+        </h1>
+        <h2 class="text-xl md:text-2xl text-blue-300 mt-2">
+          Celebrity Initials Deck (AI-powered)
+        </h2>
+        <div
+          class="mt-4 flex flex-col md:flex-row items-center justify-center gap-2 text-sm"
+        >
+          <label class="flex items-center gap-2"
+            >Provider
+            <select id="ai-provider" class="text-zinc-800 rounded px-2 py-1">
+              <option value="hf">Hugging Face</option>
+              <option value="qwen">Qwen (demo)</option>
+            </select>
+          </label>
+          <label class="flex items-center gap-2"
+            >Model (HF)
+            <input
+              id="ai-model"
+              placeholder="stabilityai/stable-diffusion-2"
+              class="text-zinc-800 rounded px-2 py-1 w-72"
+            />
+          </label>
+          <button
+            id="save-ai-config"
+            class="px-3 py-1 rounded bg-zinc-600 hover:bg-zinc-500"
+          >
+            Save
+          </button>
+          <button
+            id="performance-toggle"
+            class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-xs"
+          >
+            Show Performance
+          </button>
+        </div>
+      </div>
+
+      <!-- Performance Dashboard (Hidden by default) -->
       <div
-        class="mt-4 flex flex-col md:flex-row items-center justify-center gap-2 text-sm"
+        id="performance-dashboard"
+        class="max-w-6xl mx-auto mb-6 bg-zinc-800/50 rounded-lg p-4 hidden"
       >
-        <label class="flex items-center gap-2"
-          >Provider
-          <select id="ai-provider" class="text-zinc-800 rounded px-2 py-1">
-            <option value="hf">Hugging Face</option>
-            <option value="qwen">Qwen (demo)</option>
-          </select>
-        </label>
-        <label class="flex items-center gap-2"
-          >Model (HF)
-          <input
-            id="ai-model"
-            placeholder="stabilityai/stable-diffusion-2"
-            class="text-zinc-800 rounded px-2 py-1 w-72"
-          />
-        </label>
-        <button
-          id="save-ai-config"
-          class="px-3 py-1 rounded bg-zinc-600 hover:bg-zinc-500"
-        >
-          Save
-        </button>
-        <button
-          id="performance-toggle"
-          class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-xs"
-        >
-          Show Performance
-        </button>
-      </div>
-    </div>
-
-    <!-- Performance Dashboard (Hidden by default) -->
-    <div
-      id="performance-dashboard"
-      class="max-w-6xl mx-auto mb-6 bg-zinc-800/50 rounded-lg p-4 hidden"
-    >
-      <h3 class="text-lg font-semibold mb-3">Performance Dashboard</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-        <div class="bg-zinc-700/50 rounded p-3">
-          <h4 class="font-semibold mb-2">Memory Systems</h4>
-          <div id="memory-stats" class="space-y-1 text-xs"></div>
-        </div>
-        <div class="bg-zinc-700/50 rounded p-3">
-          <h4 class="font-semibold mb-2">AI Service</h4>
-          <div id="ai-stats" class="space-y-1 text-xs"></div>
-        </div>
-        <div class="bg-zinc-700/50 rounded p-3">
-          <h4 class="font-semibold mb-2">Performance</h4>
-          <div id="perf-stats" class="space-y-1 text-xs"></div>
+        <h3 class="text-lg font-semibold mb-3">Performance Dashboard</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+          <div class="bg-zinc-700/50 rounded p-3">
+            <h4 class="font-semibold mb-2">Memory Systems</h4>
+            <div id="memory-stats" class="space-y-1 text-xs"></div>
+          </div>
+          <div class="bg-zinc-700/50 rounded p-3">
+            <h4 class="font-semibold mb-2">AI Service</h4>
+            <div id="ai-stats" class="space-y-1 text-xs"></div>
+          </div>
+          <div class="bg-zinc-700/50 rounded p-3">
+            <h4 class="font-semibold mb-2">Performance</h4>
+            <div id="perf-stats" class="space-y-1 text-xs"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div
-      id="card-container"
-      class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-    ></div>
+      <div
+        id="card-container"
+        class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      ></div>
+    </main>
 
     <!-- Dice practice section -->
-    <section id="dice-section" class="mt-10 text-center">
+    <section id="view-dice-practice" class="view hidden mt-10 text-center">
       <h3 class="text-2xl font-semibold mb-4">Dice Practice</h3>
       <div id="dice-container" class="flex justify-center gap-4 mb-4"></div>
       <div class="flex justify-center gap-4 mb-4">
@@ -212,47 +228,47 @@
     </section>
 
     <!-- Pegboard section -->
-    <section id="peg-section" class="mt-10 text-center">
+    <section id="view-peg-system" class="view hidden mt-10 text-center">
       <h3 class="text-2xl font-semibold mb-4">Peg System (0-9)</h3>
       <div id="pegboard" class="max-w-lg mx-auto grid grid-cols-5 gap-4"></div>
     </section>
 
     <template id="card-template">
-      <div class="card w-full h-80 [perspective:1000px] cursor-pointer">
+      <div class="card w-full h-80 [perspective:1000px] cursor-pointer group">
         <div
-          class="card-inner relative w-full h-full duration-700 [transform-style:preserve-3d]"
+          class="card-inner relative w-full h-full duration-500 [transform-style:preserve-3d] group-hover:[transform:translateZ(10px)]"
         >
           <!-- front -->
           <div
-            class="card-face absolute inset-0 bg-gradient-to-b from-zinc-50 to-zinc-200 rounded-xl p-3 flex flex-col justify-between border shadow-lg"
+            class="card-face absolute inset-0 bg-white rounded-xl p-4 flex flex-col justify-between border border-gray-200 shadow-md"
           >
-            <div class="flex justify-between text-slate-900 text-lg font-bold">
+            <div class="flex justify-between text-gray-800 text-2xl font-bold">
               <span class="card-number"></span>
-              <span class="card-initials text-red-600"></span>
+              <span class="card-initials text-red-500"></span>
             </div>
-            <div class="card-image h-40 bg-black rounded-md overflow-hidden">
+            <div class="card-image h-40 bg-gray-200 rounded-lg overflow-hidden shadow-inner">
               <img class="w-full h-full object-cover" loading="lazy" />
             </div>
             <div
-              class="card-name text-center text-slate-900 font-semibold text-sm truncate"
+              class="card-name text-center text-gray-700 font-semibold text-base truncate"
             ></div>
           </div>
 
           <!-- back -->
           <div
-            class="card-face absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl text-center text-sm flex flex-col items-center justify-center text-white px-4 [transform:rotateY(180deg)]"
+            class="card-face absolute inset-0 bg-gray-800 rounded-xl text-center text-sm flex flex-col items-center justify-center text-white p-4 [transform:rotateY(180deg)]"
           >
-            <p class="card-description leading-relaxed"></p>
-            <div class="mt-4 flex gap-2">
+            <p class="card-description leading-relaxed text-gray-300"></p>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2 w-full">
               <button
-                class="generate-btn px-3 py-1 bg-red-500 hover:bg-red-600 text-xs rounded"
+                class="generate-btn w-full px-3 py-2 bg-blue-600 hover:bg-blue-700 text-xs rounded-lg transition-colors"
               >
-                Generate new image
+                Generate New Image
               </button>
               <button
-                class="edit-btn px-3 py-1 bg-amber-500 hover:bg-amber-600 text-xs rounded"
+                class="edit-btn w-full px-3 py-2 bg-gray-600 hover:bg-gray-700 text-xs rounded-lg transition-colors"
               >
-                Edit image (AI)
+                Edit with AI
               </button>
             </div>
           </div>
@@ -263,7 +279,7 @@
     <script type="module" src="/src/app.js"></script>
 
     <!-- Theme Builder section -->
-    <section id="theme-builder" class="mt-12 max-w-6xl mx-auto">
+    <section id="view-theme-builder" class="view hidden mt-12 max-w-6xl mx-auto">
       <h3 class="text-2xl font-semibold mb-4 text-center">
         Theme Builder (alpha)
       </h3>
