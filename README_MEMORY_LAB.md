@@ -27,3 +27,8 @@ The optional **3D Preview** button dynamically fetches a pinned Three.js module 
 ## Boundary and safety
 
 All app records stay local. No claims of auto-promotion to uINVERSE canon, no third-party AI calls, no embedded production credentials. The old legacy Rails server and tracked key are intentionally untouched.
+
+
+### Native and fabrication source experiments
+
+See [`experiments/README.md`](experiments/README.md) for the optional SwiftUI iPhone/Watch source, verified Linux Swift RollCore package tests (5/5), portable dice event bridge, and parametric Bambu-oriented OpenSCAD generator. The source is versioned; Apple SDK builds and physical prints remain separate verification gates.
