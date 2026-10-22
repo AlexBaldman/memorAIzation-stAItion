@@ -13,5 +13,5 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - run: node --test test/core.node.mjs
+      - run: node --test test/*.node.mjs
       - run: npm run build

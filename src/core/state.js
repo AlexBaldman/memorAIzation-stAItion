@@ -97,15 +97,33 @@ class MemoryState {
   // Load persisted state from localStorage
   loadPersistedState() {
     try {
-      // Load AI configuration
-      const aiProvider = localStorage.getItem('ai-provider');
-      const aiModel = localStorage.getItem('ai-model');
+      // Support the persisted state_* keys and earlier unprefixed settings.
+      const readPreference = (path, legacyKey) => {
+        const raw = localStorage.getItem(`state_${path.replace(/\\./g, '_')}`);
+        if (raw !== null) {
+          try { return JSON.parse(raw); } catch { return raw; }
+        }
+        return legacyKey ? localStorage.getItem(legacyKey) : null;
+      };
+      const aiProvider = readPreference('ai.provider', 'ai-provider');
+      const aiModel = readPreference('ai.model', 'ai-model');
       if (aiProvider) this.state.ai.provider = aiProvider;
       if (aiModel) this.state.ai.model = aiModel;
 
-      // Load UI preferences
-      const theme = localStorage.getItem('theme');
-      if (theme) this.state.ui.theme = theme;
+      const preferences = [
+        ['ui.theme', 'theme'],
+        ['ui.cardLayout', null],
+        ['ui.accessibility.highContrast', null],
+        ['ui.accessibility.reducedMotion', null],
+        ['ui.accessibility.fontSize', null],
+      ];
+      for (const [path, oldKey] of preferences) {
+        const value = readPreference(path, oldKey);
+        if (value === null) continue;
+        const keys = path.split('.');
+        const target = keys.slice(0, -1).reduce((obj, key) => obj[key], this.state);
+        target[keys.at(-1)] = value;
+      }
 
       // Load dice session
       const diceSession = localStorage.getItem('dice-session');
@@ -139,10 +157,12 @@ class MemoryState {
   // Set state with path support and notify subscribers
   set(path, value) {
     const keys = path.split('.');
+    // Prevent prototype pollution while allowing new nested review fields.
+    if (keys.some((key) => !key || ['__proto__', 'constructor', 'prototype'].includes(key))) return false;
     const lastKey = keys.pop();
-    const target = keys.reduce((obj, key) => obj[key], this.state);
+    const target = keys.reduce((obj, key) => obj?.[key], this.state);
 
-    if (target && Object.prototype.hasOwnProperty.call(target, lastKey)) {
+    if (target && typeof target === 'object') {
       const oldValue = target[lastKey];
       target[lastKey] = value;
 
