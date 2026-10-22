@@ -1,15 +1,9 @@
 import { memoryState } from '../core/state.js';
+import { rollPercentile } from '../core/rollkit.js';
 
-// A pure logic class for a die, with no DOM interaction.
+// View models display the results from headless RollKit, never roll independently.
 class Die {
-  constructor(sides) {
-    this.sides = sides;
-    this.value = 1;
-  }
-  roll() {
-    this.value = Math.floor(Math.random() * this.sides);
-    return this.value;
-  }
+  constructor() { this.value = 0; }
 }
 
 function renderSession(session) {
@@ -34,7 +28,7 @@ function renderSession(session) {
 }
 
 export function initDicePracticeComponent() {
-  const sec = document.getElementById('dice-section');
+  const sec = document.getElementById('view-dice-practice') || document.getElementById('dice-section');
   if (!sec) return;
 
   const container = document.getElementById('dice-container');
@@ -56,7 +50,7 @@ export function initDicePracticeComponent() {
     return;
   }
 
-  const dice = [new Die(10), new Die(10)]; // Two 10-sided dice (0-9)
+  const dice = [new Die(), new Die()]; // Tens and ones, driven by RollKit.
   const dieElements = [];
 
   // Create DOM elements for the dice
@@ -92,17 +86,20 @@ export function initDicePracticeComponent() {
   // Event Listeners
   rollBtn.addEventListener('click', () => {
     const timestamp = Date.now();
-    const rolls = dice.map((d, i) => {
-      const val = d.roll();
+    const event = rollPercentile();
+    const rolls = [event.tens, event.ones];
+    dice.forEach((d, i) => {
+      d.value = rolls[i];
       dieElements[i].classList.add('shake');
       setTimeout(() => dieElements[i].classList.remove('shake'), 600);
-      return val;
     });
+    // Shared capability event for other applications and view adapters.
+    document.dispatchEvent(new window.CustomEvent('rollkit:result', { detail: event }));
 
     renderDice();
 
-    const twoDigit = rolls[0] * 10 + rolls[1];
-    resultEl.textContent = `PAO Number: ${String(twoDigit).padStart(2, '0')}`;
+    const twoDigit = event.value;
+    resultEl.textContent = `PAO Number: ${event.display}`;
 
     // Update state instead of localStorage directly
     const currentSession = memoryState.get('dice.session') || [];
