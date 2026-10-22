@@ -19,22 +19,19 @@ const MIN_EASINESS = 1.3;
  * @returns {object} An object containing the new interval, repetitions, and easiness.
  */
 export function sm2(quality, repetitions, easiness, interval) {
-  if (quality < 0 || quality > 5) {
+  if (!Number.isInteger(quality) || quality < 0 || quality > 5) {
     throw new Error('Quality must be between 0 and 5.');
   }
 
   if (quality < 3) {
+    // Failed reviews must be due again soon, never inherit a long old interval.
     repetitions = 0;
+    interval = 1;
   } else {
     repetitions += 1;
-  }
-
-  if (repetitions === 1) {
-    interval = 1;
-  } else if (repetitions === 2) {
-    interval = 6;
-  } else {
-    interval = Math.ceil(interval * easiness);
+    if (repetitions === 1) interval = 1;
+    else if (repetitions === 2) interval = 6;
+    else interval = Math.max(1, Math.ceil(interval * easiness));
   }
 
   easiness = easiness + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
