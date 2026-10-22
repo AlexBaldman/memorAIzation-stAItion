@@ -99,7 +99,7 @@ class MemoryState {
     try {
       // Support the persisted state_* keys and earlier unprefixed settings.
       const readPreference = (path, legacyKey) => {
-        const raw = localStorage.getItem(`state_${path.replace(/\\./g, '_')}`);
+        const raw = localStorage.getItem(`state_${path.replace(/\./g, '_')}`);
         if (raw !== null) {
           try { return JSON.parse(raw); } catch { return raw; }
         }
