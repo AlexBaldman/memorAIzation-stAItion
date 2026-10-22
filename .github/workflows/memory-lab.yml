@@ -1,0 +1,17 @@
+name: Memory Lab Regression
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  core-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test test/core.node.mjs
+      - run: npm run build

@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+import { resolve } from 'node:path';
+
 export default defineConfig({
+  build: { rollupOptions: { input: { main: resolve(process.cwd(), 'index.html'), lab: resolve(process.cwd(), 'lab.html') } } },
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
